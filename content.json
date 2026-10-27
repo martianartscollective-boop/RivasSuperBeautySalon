@@ -347,7 +347,14 @@
     "metaPixelId": ""
   },
   "booking": {
-    "staff": [],
+    "staff": [
+      {
+        "name": "Maribel Barbosa"
+      },
+      {
+        "name": "Maribel Rivas"
+      }
+    ],
     "callToBookHeading": "Prefer to call or text?",
     "slotMinutes": 30,
     "calendarEnabled": true,
