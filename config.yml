@@ -328,6 +328,17 @@ collections:
               - {label: "'Call to Book' text", name: "callToBookText", widget: "text", required: false}
               - {label: "Request form heading", name: "formHeading", widget: "string", required: false}
               - {label: "Request form text", name: "formText", widget: "text", required: false}
+              - label: "Default number texts go to"
+                name: "defaultTextTarget"
+                widget: "string"
+                required: false
+                hint: "Paste the exact tel: link of whichever phone contact card (under Contact) should receive the text by default — e.g. tel:+19365296735. If you list two phone numbers in Contact, clients can still pick the other one from the dropdown."
+              - label: "Email for booking requests (optional)"
+                name: "notifyEmail"
+                widget: "string"
+                required: false
+                hint: "Lets clients email their appointment request instead of texting. Leave blank to hide the email button and only show the text option."
+              - {label: "'Email Instead' button text", name: "formEmailButtonText", widget: "string", required: false, default: "Email Instead"}
 
           - label: "Location"
             name: "location"

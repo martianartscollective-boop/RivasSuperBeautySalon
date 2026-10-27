@@ -80,7 +80,10 @@
     "callToBookHeading": "Prefer to call or text?",
     "callToBookText": "We're happy to book you over the phone. English and Spanish both spoken.",
     "formHeading": "Request an Appointment",
-    "formText": "Fill this out and it opens as a text message straight to us — we'll confirm your time."
+    "formText": "Fill this out and it opens as a text message straight to us — we'll confirm your time.",
+    "defaultTextTarget": "tel:+19365296735",
+    "notifyEmail": "jorgedozal16@gmail.com",
+    "formEmailButtonText": "Email Instead"
   },
   "socials": [
     {
