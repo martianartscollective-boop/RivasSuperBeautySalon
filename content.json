@@ -80,10 +80,18 @@
     "callToBookHeading": "Prefer to call or text?",
     "callToBookText": "We're happy to book you over the phone. English and Spanish both spoken.",
     "formHeading": "Request an Appointment",
-    "formText": "Fill this out and it opens as a text message straight to us — we'll confirm your time.",
+    "formText": "Pick a date and time, and this opens as a text message straight to us — we'll confirm your spot.",
     "defaultTextTarget": "tel:+19365296735",
     "notifyEmail": "jorgedozal16@gmail.com",
-    "formEmailButtonText": "Email Instead"
+    "formEmailButtonText": "Email Instead",
+    "staffLabel": "Preferred stylist",
+    "staff": [],
+    "calendarEnabled": true,
+    "slotStart": "10:00 AM",
+    "slotEnd": "7:00 PM",
+    "slotMinutes": 30,
+    "daysAhead": 45,
+    "blockedSlots": []
   },
   "socials": [
     {

@@ -1,4 +1,4 @@
-\backend:
+backend:
   name: git-gateway
   branch: main
 
@@ -339,6 +339,29 @@ collections:
                 required: false
                 hint: "Lets clients email their appointment request instead of texting. Leave blank to hide the email button and only show the text option."
               - {label: "'Email Instead' button text", name: "formEmailButtonText", widget: "string", required: false, default: "Email Instead"}
+              - {label: "Stylist dropdown label", name: "staffLabel", widget: "string", required: false, default: "Preferred stylist"}
+              - label: "Our team (stylist names)"
+                name: "staff"
+                widget: "list"
+                required: false
+                summary: "{{fields.name}}"
+                hint: "Add one entry per stylist. Customers can pick one (or 'No preference') in the request form, and the name is included in the text/email. Leave empty to hide the dropdown."
+                fields:
+                  - {label: "Name", name: "name", widget: "string"}
+              - {label: "Show date & time picker", name: "calendarEnabled", widget: "boolean", default: true, hint: "Turn off to hide the calendar in the request form."}
+              - {label: "First appointment of the day", name: "slotStart", widget: "string", default: "10:00 AM", hint: "Example: 10:00 AM"}
+              - {label: "Closing time", name: "slotEnd", widget: "string", default: "7:00 PM", hint: "Last appointment must finish by this time. Example: 7:00 PM"}
+              - {label: "Minutes per time slot", name: "slotMinutes", widget: "number", value_type: "int", min: 15, default: 30, hint: "30 means times like 10:00, 10:30, 11:00."}
+              - {label: "How many days ahead can people book?", name: "daysAhead", widget: "number", value_type: "int", min: 1, default: 45}
+              - label: "Blocked times (already booked / not available)"
+                name: "blockedSlots"
+                widget: "list"
+                required: false
+                summary: "{{fields.date}} {{fields.time}}"
+                hint: "After you confirm an appointment, add it here and that time disappears from the website. Leave 'Time' empty to block the whole day (day off)."
+                fields:
+                  - {label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false}
+                  - {label: "Time (leave empty for the whole day)", name: "time", widget: "string", required: false, hint: "Example: 2:00 PM. For longer services, add each half-hour they take up."}
 
           - label: "Location"
             name: "location"

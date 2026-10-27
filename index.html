@@ -320,6 +320,11 @@
             <div class="fld"><label for="f_phone">Phone</label><input type="tel" id="f_phone" placeholder="(xxx) xxx-xxxx" required></div>
           </div>
           <div class="fld"><label for="f_service">Service</label><select id="f_service"></select></div>
+          <div class="fld" id="f_staff_wrap" hidden><label for="f_staff" id="f_staff_label">Preferred stylist</label><select id="f_staff"></select></div>
+          <div class="form-row" id="f_when_wrap" hidden>
+            <div class="fld"><label for="f_date">Preferred date</label><input type="date" id="f_date"></div>
+            <div class="fld"><label for="f_time">Preferred time</label><select id="f_time"><option value="">Pick a date first</option></select></div>
+          </div>
           <div class="fld" id="f_lang_wrap"><label for="f_lang">Text which number?</label><select id="f_lang"></select></div>
           <div class="fld"><label for="f_notes">Notes (preferred day/time, extension method, etc.)</label><textarea id="f_notes" rows="3" placeholder="e.g. Saturday afternoon, BYO extensions wax method..."></textarea></div>
           <div style="display:flex;gap:12px;flex-wrap:wrap;">
@@ -593,6 +598,29 @@
     };
   }
 
+  // ---------- Calendar helpers ----------
+  function parseTimeToMin(t){
+    const m = /^(\d{1,2})(?::(\d{2}))?\s*([ap])?m?$/i.exec(String(t || '').trim());
+    if(!m) return null;
+    let h = Number(m[1]); const min = Number(m[2] || 0); const ap = (m[3] || '').toLowerCase();
+    if(ap){ if(h === 12) h = 0; if(ap === 'p') h += 12; }
+    return h * 60 + min;
+  }
+  function fmtMin(total){
+    let h = Math.floor(total / 60); const m = total % 60;
+    const ap = h >= 12 ? 'PM' : 'AM';
+    h = h % 12 || 12;
+    return `${h}:${String(m).padStart(2, '0')} ${ap}`;
+  }
+  function whenText(){
+    const d = document.getElementById('f_date').value;
+    const t = document.getElementById('f_time').value;
+    if(!d || !t) return '';
+    const [y, mo, da] = d.split('-').map(Number);
+    const label = new Date(y, mo - 1, da).toLocaleDateString('en-US', {weekday:'short', month:'short', day:'numeric'});
+    return `${label} at ${t}`;
+  }
+
   function render(data){
     const settings = data.settings || {};
     const site = data.site || {};
@@ -818,6 +846,70 @@
     submitBtn.disabled = phones.length === 0;
     if(phones.length === 0) submitBtn.textContent = 'Texting unavailable — call us instead';
 
+    // Stylist picker (hidden until at least one name is added in /admin)
+    const staffNames = (booking.staff || [])
+      .map(s => (typeof s === 'string') ? s : (s && s.name) || '')
+      .map(s => s.trim()).filter(Boolean);
+    const staffWrap = document.getElementById('f_staff_wrap');
+    const staffSelect = document.getElementById('f_staff');
+    staffWrap.hidden = staffNames.length === 0;
+    document.getElementById('f_staff_label').textContent = booking.staffLabel || 'Preferred stylist';
+    staffSelect.innerHTML = `<option value="">No preference</option>` + staffNames.map(n => `<option value="${esc(n)}">${esc(n)}</option>`).join('');
+
+    // Calendar: pick a date, then only the times that are still open are offered.
+    // Times she blocks in /admin (Book Now -> Blocked times) disappear from the list.
+    const calOn = booking.calendarEnabled !== false;
+    const whenWrap = document.getElementById('f_when_wrap');
+    const dateInput = document.getElementById('f_date');
+    const timeSelect = document.getElementById('f_time');
+    whenWrap.hidden = !calOn;
+    dateInput.required = calOn;
+    timeSelect.required = calOn;
+    if(calOn){
+      const pad = n => String(n).padStart(2, '0');
+      const ymd = d => `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+      const startMin = parseTimeToMin(booking.slotStart);
+      const endMin = parseTimeToMin(booking.slotEnd);
+      const slotStart = startMin === null ? 600 : startMin;
+      const slotEnd = endMin === null ? 1140 : endMin;
+      const slotLen = Math.max(15, Number(booking.slotMinutes) || 30);
+      const daysAhead = Math.max(1, Number(booking.daysAhead) || 45);
+      const today = new Date();
+      const todayStr = ymd(today);
+      const last = new Date(today.getFullYear(), today.getMonth(), today.getDate() + daysAhead);
+      dateInput.min = todayStr;
+      dateInput.max = ymd(last);
+      const blocked = {};
+      (booking.blockedSlots || []).forEach(b => {
+        const d = String((b && b.date) || '').slice(0, 10);
+        if(!d) return;
+        const tstr = String((b && b.time) || '').trim();
+        if(!tstr){ blocked[d] = 'all'; return; }
+        const m = parseTimeToMin(tstr);
+        if(m === null || blocked[d] === 'all') return;
+        (blocked[d] = blocked[d] || new Set()).add(m);
+      });
+      const refreshTimes = () => {
+        const v = dateInput.value;
+        if(!v){ timeSelect.innerHTML = '<option value="">Pick a date first</option>'; return; }
+        const times = [];
+        if(blocked[v] !== 'all'){
+          const nowMin = today.getHours() * 60 + today.getMinutes() + 60;
+          for(let t = slotStart; t + slotLen <= slotEnd; t += slotLen){
+            if(blocked[v] && blocked[v].has(t)) continue;
+            if(v === todayStr && t < nowMin) continue;
+            times.push(t);
+          }
+        }
+        timeSelect.innerHTML = times.length
+          ? '<option value="">Choose a time</option>' + times.map(t => `<option value="${esc(fmtMin(t))}">${esc(fmtMin(t))}</option>`).join('')
+          : '<option value="">No openings that day — try another date</option>';
+      };
+      dateInput.onchange = refreshTimes;
+      dateInput.value = '';
+      refreshTimes();
+    }
+
     // Email fallback button
     const emailBtn = document.getElementById('formEmailBtn');
     const notifyEmail = (booking.notifyEmail || '').trim();
@@ -925,7 +1017,9 @@
         const telHref = document.getElementById('f_lang').value;
         if(!telHref) return;
         const digits = telHref.replace(/\D/g, '');
-        const body = `Hi! I'd like to book: ${service}. Name: ${name}. Phone: ${phone}.${notes ? ' Notes: ' + notes : ''}`;
+        const stylist = document.getElementById('f_staff').value;
+        const when = whenText();
+        const body = `Hi! I'd like to book: ${service}.${stylist ? ' Stylist: ' + stylist + '.' : ''}${when ? ' Preferred time: ' + when + '.' : ''} Name: ${name}. Phone: ${phone}.${notes ? ' Notes: ' + notes : ''}`;
         window.location.href = `sms:+${digits}?&body=${encodeURIComponent(body)}`;
       });
     }
@@ -937,12 +1031,16 @@
       emailBtn.addEventListener('click', () => {
         const notifyEmail = emailBtn.dataset.notifyEmail;
         if(!notifyEmail) return;
+        const bookForm = document.getElementById('bookForm');
+        if(bookForm && !bookForm.reportValidity()) return;
+        const when = whenText();
         const name = document.getElementById('f_name').value.trim();
         const phone = document.getElementById('f_phone').value.trim();
         const service = document.getElementById('f_service').value;
         const notes = document.getElementById('f_notes').value.trim();
         const subject = `Appointment Request${name ? ' — ' + name : ''}`;
-        const body = `Name: ${name}\nPhone: ${phone}\nService: ${service}\n${notes ? 'Notes: ' + notes : ''}`;
+        const stylist = document.getElementById('f_staff').value;
+        const body = `Name: ${name}\nPhone: ${phone}\nService: ${service}\n${when ? 'When: ' + when + '\n' : ''}${stylist ? 'Stylist: ' + stylist + '\n' : ''}${notes ? 'Notes: ' + notes : ''}`;
         window.location.href = `mailto:${notifyEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
       });
     }
