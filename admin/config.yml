@@ -139,6 +139,7 @@ collections:
                       - {label: "About", value: "about"}
                       - {label: "Services & Pricing", value: "services"}
                       - {label: "Photo Gallery", value: "gallery"}
+                      - {label: "Meet the Team (barber photos)", value: "team"}
                       - {label: "Book Now", value: "booking"}
                       - {label: "Location & Map", value: "location"}
                       - {label: "FAQ", value: "faq"}
@@ -306,6 +307,24 @@ collections:
                   - {label: "Photo", name: "img", widget: "image"}
                   - {label: "Caption (optional)", name: "caption", widget: "string", required: false}
 
+          - label: "Meet the Team (barber / stylist photos)"
+            name: "team"
+            widget: "object"
+            hint: "Add a person with a photo and they appear on the website. People WITHOUT a photo are never shown on the page (no empty frames) - but their name still appears in the 'Preferred stylist' dropdown of the booking form. If nobody has a photo, the whole section stays hidden."
+            fields:
+              - {label: "Small heading", name: "kicker", widget: "string", required: false, default: "Meet the Team"}
+              - {label: "Title", name: "heading", widget: "string", required: false, default: "Meet Your Stylists"}
+              - label: "Team members"
+                name: "members"
+                widget: "list"
+                required: false
+                summary: "{{fields.name}} - {{fields.role}}"
+                fields:
+                  - {label: "Name", name: "name", widget: "string", required: false, hint: "Add the name to show it under the photo and in the booking form's stylist dropdown."}
+                  - {label: "Role (optional)", name: "role", widget: "string", required: false, hint: "Example: Barber, Color Specialist, Owner"}
+                  - {label: "Photo / headshot", name: "photo", widget: "image", required: false, hint: "A portrait works best (taller than wide). Leave empty and this person is hidden from the page."}
+                  - {label: "Short bio (optional)", name: "bio", widget: "text", required: false}
+
           - label: "Ad Tracking (Meta / Facebook / Instagram Pixel)"
             name: "tracking"
             widget: "object"
@@ -333,6 +352,11 @@ collections:
                 widget: "string"
                 required: false
                 hint: "Paste the exact tel: link of whichever phone contact card (under Contact) should receive the text by default — e.g. tel:+19365296735. If you list two phone numbers in Contact, clients can still pick the other one from the dropdown."
+              - label: "Spanish phone line"
+                name: "spanishLineTarget"
+                widget: "string"
+                required: false
+                hint: "The tel: link of your Spanish-speaking number (e.g. tel:+19365296735). Texts sent to this number are written in Spanish automatically; texts to any other number are written in English."
               - label: "Email for booking requests (optional)"
                 name: "notifyEmail"
                 widget: "string"
@@ -416,3 +440,146 @@ collections:
             fields:
               - {label: "Tagline under the business name", name: "tagline", widget: "string"}
               - {label: "Fine print", name: "note", widget: "text"}
+
+      - file: "content.es.json"
+        label: "Versión en Español (Spanish text)"
+        name: "content_es"
+        fields:
+
+          - label: "Website Settings (Spanish)"
+            name: "site"
+            widget: "object"
+            hint: "Spanish wording for headings and buttons. Anything you leave empty automatically shows the English version."
+            fields:
+              - {label: "Page title (Google)", name: "metaTitle", widget: "string", required: false}
+              - {label: "Page description (Google)", name: "metaDescription", widget: "text", required: false}
+              - {label: "Home tab name", name: "homeNavLabel", widget: "string", required: false}
+              - {label: "Main hero button", name: "heroPrimaryButton", widget: "string", required: false}
+              - {label: "Second hero button", name: "heroSecondaryButton", widget: "string", required: false}
+              - {label: "Services small heading", name: "servicesKicker", widget: "string", required: false}
+              - {label: "Services title", name: "servicesTitle", widget: "string", required: false}
+              - {label: "Services note", name: "servicesNote", widget: "text", required: false}
+              - {label: "Gallery small heading", name: "galleryKicker", widget: "string", required: false}
+              - {label: "Gallery title", name: "galleryTitle", widget: "string", required: false}
+              - {label: "Gallery intro", name: "galleryIntro", widget: "text", required: false}
+              - {label: "Booking small heading", name: "bookingKicker", widget: "string", required: false}
+              - {label: "Booking title", name: "bookingTitle", widget: "string", required: false}
+              - {label: "FAQ small heading", name: "faqKicker", widget: "string", required: false}
+              - {label: "FAQ title", name: "faqTitle", widget: "string", required: false}
+              - {label: "Directions button", name: "directionsButtonText", widget: "string", required: false}
+
+          - label: "Top of page (Spanish)"
+            name: "hero"
+            widget: "object"
+            fields:
+              - {label: "Small line above the name", name: "presents", widget: "string", required: false}
+              - {label: "Subtitle", name: "subtitle", widget: "string", required: false}
+              - {label: "Hours line", name: "hoursLine", widget: "string", required: false}
+
+          - label: "About (Spanish)"
+            name: "about"
+            widget: "object"
+            fields:
+              - {label: "Small heading", name: "kicker", widget: "string", required: false}
+              - label: "Paragraphs (same order as English)"
+                name: "paragraphs"
+                widget: "list"
+                required: false
+                field: {label: "Paragraph", name: "paragraph", widget: "text"}
+              - label: "Numbers (same order as English)"
+                name: "stats"
+                widget: "list"
+                required: false
+                fields:
+                  - {label: "Number (leave empty to keep English)", name: "value", widget: "string", required: false}
+                  - {label: "Label", name: "label", widget: "string", required: false}
+
+          - label: "Services (Spanish)"
+            name: "serviceCategories"
+            widget: "list"
+            required: false
+            summary: "{{fields.title}}"
+            hint: "IMPORTANT: keep the SAME ORDER as the English list. Prices are not translated; they come from the English version. If you add a new service in English, it shows in English until you add its Spanish here."
+            fields:
+              - {label: "Category name", name: "title", widget: "string", required: false}
+              - label: "Services (same order as English)"
+                name: "items"
+                widget: "list"
+                required: false
+                summary: "{{fields.name}}"
+                fields:
+                  - {label: "Service name", name: "name", widget: "string", required: false}
+                  - {label: "Description", name: "desc", widget: "text", required: false}
+
+          - label: "Book Now (Spanish)"
+            name: "booking"
+            widget: "object"
+            fields:
+              - {label: "'Book Online' button text", name: "payOnlineLabel", widget: "string", required: false}
+              - {label: "Note under the booking options", name: "bookingNote", widget: "text", required: false}
+              - {label: "'Call to Book' heading", name: "callToBookHeading", widget: "string", required: false}
+              - {label: "'Call to Book' text", name: "callToBookText", widget: "text", required: false}
+              - {label: "Request form heading", name: "formHeading", widget: "string", required: false}
+              - {label: "Request form text", name: "formText", widget: "text", required: false}
+              - {label: "'Email Instead' button text", name: "formEmailButtonText", widget: "string", required: false}
+              - {label: "Stylist dropdown label", name: "staffLabel", widget: "string", required: false}
+
+          - label: "Location (Spanish)"
+            name: "location"
+            widget: "object"
+            fields:
+              - {label: "Title", name: "title", widget: "string", required: false}
+              - label: "Paragraphs (same order as English)"
+                name: "paragraphs"
+                widget: "list"
+                required: false
+                field: {label: "Paragraph", name: "paragraph", widget: "text"}
+
+          - label: "FAQ (Spanish)"
+            name: "faq"
+            widget: "list"
+            required: false
+            summary: "{{fields.q}}"
+            hint: "Keep the same order as the English questions."
+            fields:
+              - {label: "Question", name: "q", widget: "string", required: false}
+              - {label: "Answer", name: "a", widget: "text", required: false}
+
+          - label: "Contact (Spanish)"
+            name: "contact"
+            widget: "object"
+            fields:
+              - {label: "Small heading", name: "kicker", widget: "string", required: false}
+              - {label: "Title", name: "title", widget: "string", required: false}
+              - {label: "Line above the email", name: "emailLabel", widget: "string", required: false}
+              - label: "Cards (same order as English)"
+                name: "cards"
+                widget: "list"
+                required: false
+                summary: "{{fields.title}}"
+                fields:
+                  - {label: "Title", name: "title", widget: "string", required: false}
+                  - {label: "Description", name: "desc", widget: "text", required: false}
+                  - {label: "Button text (leave empty to keep English / the phone number)", name: "button", widget: "string", required: false}
+
+          - label: "Footer (Spanish)"
+            name: "footer"
+            widget: "object"
+            fields:
+              - {label: "Tagline", name: "tagline", widget: "string", required: false}
+              - {label: "Fine print", name: "note", widget: "text", required: false}
+
+          - label: "Meet the Team (Spanish)"
+            name: "team"
+            widget: "object"
+            fields:
+              - {label: "Small heading", name: "kicker", widget: "string", required: false}
+              - {label: "Title", name: "heading", widget: "string", required: false}
+              - label: "Team members (same order as English)"
+                name: "members"
+                widget: "list"
+                required: false
+                summary: "{{fields.role}}"
+                fields:
+                  - {label: "Role", name: "role", widget: "string", required: false}
+                  - {label: "Short bio", name: "bio", widget: "text", required: false}
