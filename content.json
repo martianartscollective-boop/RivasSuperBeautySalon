@@ -26,10 +26,10 @@
     ]
   },
   "settings": {
+    "siteIcon": "/images/site-icon.png",
     "coverImage": "/images/hero-bg.jpg",
     "heroLogo": "",
     "heroAnimation": "fadeUp",
-    "heroAnimationSeconds": 1.1,
     "typography": {
       "titleFont": "Fraunces",
       "titleSize": 100,
@@ -42,68 +42,84 @@
     },
     "colors": {
       "gold": "#c9972e",
-      "goldDeep": "#9c7220",
-      "cream": "#faf3ec",
-      "paper": "#f1dad3",
-      "maroon": "#7c2c4b",
-      "maroonDeep": "#4a1229",
-      "teal": "#e8657d",
-      "ink": "#2b1420",
-      "surface": "#ffffff",
-      "focus": "#c9972e",
-      "flowerLeft": "#00000000",
-      "flowerRight": "#00000000",
-      "stem": "#00000000",
       "shadow": "rgba(46,11,27,0.28)",
-      "shadowSoft": "rgba(46,11,27,0.16)",
-      "divider": "rgba(124,44,75,0.20)",
+      "flowerRight": "#00000000",
+      "heroOverlayBottom": "rgba(46,11,27,0.88)",
+      "cream": "#faf3ec",
+      "flowerLeft": "#00000000",
+      "ink": "#2b1420",
       "heroTextShadow": "rgba(0,0,0,0.45)",
       "dusk1": "#4a1229",
       "dusk2": "#2e0b1b",
+      "stem": "#00000000",
+      "shadowSoft": "rgba(46,11,27,0.16)",
+      "goldDeep": "#9c7220",
+      "paper": "#f1dad3",
+      "surface": "#ffffff",
+      "maroon": "#7c2c4b",
+      "focus": "#c9972e",
+      "divider": "rgba(124,44,75,0.20)",
       "sunset1": "#7c2c4b",
       "sunset2": "#4a1229",
+      "maroonDeep": "#4a1229",
+      "teal": "#e8657d",
       "sunset3": "#2e0b1b",
-      "heroOverlayTop": "rgba(46,11,27,0.55)",
-      "heroOverlayBottom": "rgba(46,11,27,0.88)"
+      "heroOverlayTop": "rgba(46,11,27,0.55)"
     },
+    "heroAnimationSeconds": 1.1,
+    "shareImage": "/images/hero-bg.jpg",
     "seo": {
       "siteUrl": "",
       "organizerName": "Rivas Super Salon"
-    },
-    "siteIcon": "/images/site-icon.png",
-    "shareImage": "/images/hero-bg.jpg"
-  },
-  "booking": {
-    "bookingUrl": "",
-    "payOnlineLabel": "Book & Pay Online",
-    "bookingNote": "Book online if you'd like to reserve and pay ahead, or just call, text, or walk in — you can always pay in person with cash or card.",
-    "callToBookHeading": "Prefer to call or text?",
-    "callToBookText": "We're happy to book you over the phone. English and Spanish both spoken.",
-    "formHeading": "Request an Appointment",
-    "formText": "Pick a date and time, and this opens as a text message straight to us — we'll confirm your spot.",
-    "defaultTextTarget": "tel:+19365296735",
-    "spanishLineTarget": "tel:+19365296735",
-    "notifyEmail": "jorgedozal16@gmail.com",
-    "formEmailButtonText": "Email Instead",
-    "staffLabel": "Preferred stylist",
-    "staff": [],
-    "calendarEnabled": true,
-    "slotStart": "10:00 AM",
-    "slotEnd": "7:00 PM",
-    "slotMinutes": 30,
-    "daysAhead": 45,
-    "blockedSlots": []
-  },
-  "socials": [
-    {
-      "label": "Instagram",
-      "url": ""
-    },
-    {
-      "label": "Facebook",
-      "url": ""
     }
-  ],
+  },
+  "socials": [],
+  "site": {
+    "faqTitle": "Frequently Asked Questions",
+    "galleryKicker": "Our Work",
+    "galleryTitle": "Fresh Cuts, Fresh Looks",
+    "footerName": "Rivas Super Salon",
+    "faqKicker": "Good to know",
+    "heroSecondaryButton": "See Services",
+    "bookingKicker": "Ready when you are",
+    "servicesNote": "Prices may vary with hair length, texture, and desired result. Ask your stylist for an exact quote.",
+    "homeNavLabel": "Home",
+    "servicesKicker": "Menu",
+    "metaTitle": "Rivas Super Salon — Conroe, TX",
+    "directionsButtonText": "Get Directions",
+    "metaDescription": "Rivas Super Salon in Conroe, TX. Haircuts, waxing, perms, extensions, keratin, highlights and more. English & Spanish spoken.",
+    "servicesTitle": "Services & Pricing",
+    "heroPrimaryButton": "Book an Appointment",
+    "galleryIntro": "A look at real work from our chairs — cuts, color, extensions and more.",
+    "bookingTitle": "Book an Appointment"
+  },
+  "about": {
+    "kicker": "About the Salon",
+    "paragraphs": [
+      "Rivas Super Salon is a full-service salon and barbershop at 1407 N. Frazier in Conroe, offering everything from classic haircuts and beard work to perms, keratin treatments, extensions, and color.",
+      "Our team is bilingual — English and Spanish spoken — so every client feels at home in the chair. Walk in for a quick trim or book ahead for a full transformation."
+    ],
+    "stats": [
+      {
+        "value": "15+",
+        "label": "Services offered"
+      },
+      {
+        "value": "EN/ES",
+        "label": "Bilingual team"
+      },
+      {
+        "value": "7",
+        "label": "Days a week"
+      },
+      {
+        "value": "All",
+        "label": "Ages welcome"
+      }
+    ],
+    "photo": "/images/about-storefront.jpg",
+    "videoId": ""
+  },
   "serviceCategories": [
     {
       "title": "Haircuts & Trims",
@@ -234,90 +250,6 @@
       ]
     }
   ],
-  "site": {
-    "metaTitle": "Rivas Super Salon — Conroe, TX",
-    "metaDescription": "Rivas Super Salon in Conroe, TX. Haircuts, waxing, perms, extensions, keratin, highlights and more. English & Spanish spoken.",
-    "homeNavLabel": "Home",
-    "heroPrimaryButton": "Book an Appointment",
-    "heroSecondaryButton": "See Services",
-    "servicesKicker": "Menu",
-    "servicesTitle": "Services & Pricing",
-    "servicesNote": "Prices may vary with hair length, texture, and desired result. Ask your stylist for an exact quote.",
-    "galleryKicker": "Our Work",
-    "galleryTitle": "Fresh Cuts, Fresh Looks",
-    "galleryIntro": "A look at real work from our chairs — cuts, color, extensions and more.",
-    "bookingKicker": "Ready when you are",
-    "bookingTitle": "Book an Appointment",
-    "faqKicker": "Good to know",
-    "faqTitle": "Frequently Asked Questions",
-    "directionsButtonText": "Get Directions",
-    "footerName": "Rivas Super Salon"
-  },
-  "hero": {
-    "presents": "Conroe's Full-Service Salon",
-    "title": "Rivas Super Salon",
-    "subtitle": "Cuts, color, waxing & extensions — one chair, every look",
-    "addressLine": "1407 N. Frazier St",
-    "cityLine": "Conroe, TX",
-    "hoursLine": "Mon–Sun 10am–7pm"
-  },
-  "about": {
-    "kicker": "About the Salon",
-    "paragraphs": [
-      "Rivas Super Salon is a full-service salon and barbershop at 1407 N. Frazier in Conroe, offering everything from classic haircuts and beard work to perms, keratin treatments, extensions, and color.",
-      "Our team is bilingual — English and Spanish spoken — so every client feels at home in the chair. Walk in for a quick trim or book ahead for a full transformation."
-    ],
-    "stats": [
-      {
-        "value": "15+",
-        "label": "Services offered"
-      },
-      {
-        "value": "EN/ES",
-        "label": "Bilingual team"
-      },
-      {
-        "value": "7",
-        "label": "Days a week"
-      },
-      {
-        "value": "All",
-        "label": "Ages welcome"
-      }
-    ],
-    "photo": "/images/about-storefront.jpg",
-    "videoId": ""
-  },
-  "location": {
-    "title": "Rivas Super Salon",
-    "paragraphs": [
-      "1407 N. Frazier St, Conroe, TX 77301 — free on-site parking right out front.",
-      "Walk-ins are always welcome, and appointments get priority. Call or text ahead to check the wait."
-    ],
-    "mapQuery": "1407 N Frazier St, Conroe, TX 77301"
-  },
-  "faq": [
-    {
-      "q": "Do I need an appointment, or can I walk in?",
-      "a": "Both work! Walk-ins are always welcome, but appointments get priority, especially on weekends. Call or text ahead if you want to check the wait."
-    },
-    {
-      "q": "Can I pay in person instead of online?",
-      "a": "Of course. You're welcome to pay in person with cash or card — booking or paying online is just an option for those who'd rather reserve ahead."
-    },
-    {
-      "q": "I want to bring my own hair extensions — can you install them?",
-      "a": "Yes! We install client-provided extensions using the wax method (lasts about 2–3 months), braided-in, or keratin bond. Just let us know your preferred method when you book, in the notes."
-    },
-    {
-      "q": "Do you speak Spanish?",
-      "a": "Sí! Our team is fully bilingual. Call or text (936) 529-6735 for Spanish, or (936) 224-9442 for English."
-    }
-  ],
-  "footer": {
-    "tagline": "Conroe, TX · Mon–Sun 10am–7pm",
-    "note": "Rivas Super Salon · Walk-ins & appointments welcome."
-  },
   "gallery": {
     "kicker": "Our Work",
     "heading": "Fresh Cuts, Fresh Looks",
@@ -389,6 +321,68 @@
       }
     ]
   },
+  "location": {
+    "title": "Rivas Super Salon",
+    "paragraphs": [
+      "1407 N. Frazier St, Conroe, TX 77301 — free on-site parking right out front.",
+      "Walk-ins are always welcome, and appointments get priority. Call or text ahead to check the wait."
+    ],
+    "mapQuery": "1407 N Frazier St, Conroe, TX 77301"
+  },
+  "faq": [
+    {
+      "q": "Do I need an appointment, or can I walk in?",
+      "a": "Both work! Walk-ins are always welcome, but appointments get priority, especially on weekends. Call or text ahead if you want to check the wait."
+    },
+    {
+      "q": "Can I pay in person instead of online?",
+      "a": "Of course. You're welcome to pay in person with cash or card — booking or paying online is just an option for those who'd rather reserve ahead."
+    },
+    {
+      "q": "I want to bring my own hair extensions — can you install them?",
+      "a": "Yes! We install client-provided extensions using the wax method (lasts about 2–3 months), braided-in, or keratin bond. Just let us know your preferred method when you book, in the notes."
+    },
+    {
+      "q": "Do you speak Spanish?",
+      "a": "Sí! Our team is fully bilingual. Call or text (936) 529-6735 for Spanish, or (936) 224-9442 for English."
+    }
+  ],
+  "tracking": {
+    "metaPixelId": ""
+  },
+  "booking": {
+    "staff": [],
+    "callToBookHeading": "Prefer to call or text?",
+    "slotMinutes": 30,
+    "calendarEnabled": true,
+    "slotStart": "10:00 AM",
+    "blockedSlots": [],
+    "daysAhead": 45,
+    "bookingNote": "Book online if you'd like to reserve and pay ahead, or just call, text, or walk in — you can always pay in person with cash or card.",
+    "callToBookText": "We're happy to book you over the phone. English and Spanish both spoken.",
+    "formText": "Pick a date and time, and this opens as a text message straight to us — we'll confirm your spot.",
+    "notifyEmail": "jorgedozal16@gmail.com",
+    "staffLabel": "Preferred stylist",
+    "bookingUrl": "",
+    "formEmailButtonText": "Email Instead",
+    "payOnlineLabel": "Book & Pay Online",
+    "spanishLineTarget": "tel:+19365296735",
+    "slotEnd": "7:00 PM",
+    "formHeading": "Request an Appointment",
+    "defaultTextTarget": "tel:+19365296735"
+  },
+  "hero": {
+    "presents": "Conroe's Full-Service Salon",
+    "title": "Rivas Super Salon",
+    "subtitle": "Cuts, color, waxing & extensions — one chair, every look",
+    "addressLine": "1407 N. Frazier St",
+    "cityLine": "Conroe, TX",
+    "hoursLine": "Mon–Sun 10am–7pm"
+  },
+  "footer": {
+    "tagline": "Conroe, TX · Mon–Sun 10am–7pm",
+    "note": "Rivas Super Salon · Walk-ins & appointments welcome."
+  },
   "pageSections": [
     {
       "type": "builtin",
@@ -447,9 +441,6 @@
       "visible": true
     }
   ],
-  "tracking": {
-    "metaPixelId": ""
-  },
   "team": {
     "kicker": "Meet the Team",
     "heading": "Meet Your Stylists",
@@ -457,13 +448,13 @@
       {
         "name": "Maribel Rivas",
         "role": "Owner & Stylist",
-        "photo": "/images/team-02.jpg",
+        "photo": "/images/maribel-barbosa.jpg",
         "bio": ""
       },
       {
         "name": "Maribel Barbosa",
         "role": "Stylist",
-        "photo": "/images/team-01.jpg",
+        "photo": "/images/maribel-rivas.jpg",
         "bio": ""
       }
     ]
