@@ -64,12 +64,23 @@
   .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
   ::selection{background:var(--gold); color:var(--ink);}
 
-  .tabnav{position:sticky;top:0;z-index:50;background:rgba(43,20,32,0.86);backdrop-filter:blur(10px) saturate(1.3);-webkit-backdrop-filter:blur(10px) saturate(1.3);border-bottom:3px solid var(--gold);overflow-x:auto;scrollbar-width:none;}
-  .tabnav::-webkit-scrollbar{display:none;}
-  .tabnav-inner{display:flex;min-width:max-content;padding:0 12px;}
-  .tabnav a{text-decoration:none;color:var(--cream);font-family:var(--font-base);font-size:calc(0.95rem * var(--base-scale));font-weight:500;padding:16px 18px;white-space:nowrap;border-bottom:3px solid transparent;transition:color .2s ease, border-color .2s ease;}
-  .tabnav a:hover{color:var(--gold);}
-  .tabnav a.active{color:var(--gold);border-color:var(--gold);}
+  .tabnav{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:22px;height:74px;padding:0 30px;margin-bottom:-74px;background:linear-gradient(180deg,rgba(30,8,18,.78),rgba(30,8,18,0));transition:background .3s ease, box-shadow .3s ease;}
+  .tabnav.solid{background:rgba(43,20,32,.94);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 8px 26px rgba(0,0,0,.28);}
+  .nav-brand{font-family:var(--font-title);font-weight:600;font-size:1.4rem;color:#fff;white-space:nowrap;text-decoration:none;}
+  .nav-brand b{color:var(--gold);font-weight:600;}
+  .tabnav-inner{flex:1;display:flex;justify-content:center;min-width:0;overflow-x:auto;scrollbar-width:none;gap:4px;padding:0;}
+  .tabnav-inner::-webkit-scrollbar{display:none;}
+  .tabnav-inner a{flex:none;position:relative;text-decoration:none;white-space:nowrap;padding:10px 12px;font-family:var(--font-base);font-size:.76rem;letter-spacing:.15em;text-transform:uppercase;font-weight:600;color:var(--cream);}
+  .tabnav-inner a::after{content:"";position:absolute;left:12px;right:12px;bottom:4px;height:2px;border-radius:2px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .3s ease;}
+  .tabnav-inner a.active::after,.tabnav-inner a:hover::after{transform:scaleX(1);}
+  .tabnav-inner a.active{color:#fff;}
+  .nav-cta{flex:none;padding:11px 22px;border-radius:999px;background:linear-gradient(135deg,#ead08b,var(--gold));color:var(--ink);font-family:var(--font-base);font-size:.85rem;font-weight:700;text-decoration:none;white-space:nowrap;box-shadow:0 4px 0 var(--gold-deep,#a87a1c);}
+  @media (max-width:760px){
+    .tabnav{flex-wrap:wrap;height:auto;gap:0;padding:10px 14px 0;margin-bottom:-96px;justify-content:space-between;}
+    .nav-brand{font-size:1.2rem;}
+    .tabnav-inner{order:3;width:100%;flex:none;justify-content:flex-start;margin-top:4px;}
+    .nav-cta{padding:9px 16px;}
+  }
   .translate-btn{display:inline-flex;align-items:center;gap:8px;background:transparent;border:1.5px solid var(--maroon);color:var(--maroon);font-family:var(--font-base);font-weight:600;font-size:calc(0.88rem * var(--base-scale));padding:10px 18px;border-radius:999px;cursor:pointer;white-space:nowrap;margin-bottom:18px;transition:background .2s ease, transform .2s ease;}
   .translate-btn:hover{background:rgba(124,44,75,0.08);transform:translateY(-2px);}
   .translate-btn svg{width:16px;height:16px;flex:none;}
@@ -103,12 +114,6 @@
   .btn-outline-dark{background:transparent;border-color:var(--maroon);color:var(--maroon);}
   .btn-outline-dark:hover{background:rgba(124,44,75,0.08);}
 
-  /* ---- Google Translate widget: keep it invisible except for our own button ---- */
-  .goog-te-banner-frame.skiptranslate{display:none !important;}
-  body{top:0 !important;}
-  .goog-text-highlight{background:none !important;box-shadow:none !important;}
-  .goog-tooltip, .goog-tooltip:hover{display:none !important;}
-  #google_translate_element{display:none !important;}
 
   section{padding:76px 20px;}
   .section-inner{max-width:1080px;margin:0 auto;}
@@ -125,7 +130,9 @@
   .stat{min-width:90px;}
   .stat b{display:block;font-family:var(--font-title);font-weight:600;font-size:calc(1.7rem * var(--title-scale));color:var(--maroon);}
   .stat span{font-family:var(--font-base);font-size:calc(0.85rem * var(--base-scale));color:var(--ink-soft);}
-  .about-photo{border-radius:6px;overflow:hidden;box-shadow:0 14px 30px var(--shadow-soft);border:6px solid var(--cream);}
+  .about-photo{position:relative;isolation:isolate;border-radius:28px;box-shadow:0 24px 50px var(--shadow);transform:perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .25s ease-out;}
+  .about-photo::before{content:"";position:absolute;inset:-14px 14px 14px -14px;border-radius:30px;background:linear-gradient(135deg,var(--gold),var(--teal));z-index:-1;opacity:.85;}
+  .about-photo img{width:100%;max-height:540px;aspect-ratio:4/5;object-fit:cover;object-position:center 30%;border-radius:28px;display:block;}
   .about-video{border-radius:8px;overflow:hidden;box-shadow:0 16px 34px var(--shadow);aspect-ratio:16/9;border:6px solid var(--cream);background:#000;}
   .about-video iframe,.about-video video{width:100%;height:100%;border:0;display:block;}
   .about-video video{object-fit:contain;background:#000;}
@@ -145,20 +152,56 @@
   .svc-desc{font-family:var(--font-body);font-size:calc(0.95rem * var(--body-scale));color:var(--ink-soft);margin-top:5px;line-height:1.55;max-width:50ch;}
   .svc-price{font-family:var(--font-base);font-weight:700;font-size:calc(1.15rem * var(--base-scale));color:var(--maroon);white-space:nowrap;padding-top:2px;}
 
-  /* ---------- Gallery ---------- */
-  .gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
-  .gallery-grid .g-item{aspect-ratio:1/1;position:relative;border-radius:6px;overflow:hidden;cursor:pointer;box-shadow:0 6px 18px var(--shadow-soft);}
-  .gallery-grid img{width:100%;height:100%;object-fit:cover;transition:transform .5s cubic-bezier(.22,1,.36,1);}
-  .gallery-grid .g-item:hover img{transform:scale(1.08);}
-  .gallery-grid .g-item::after{content:"⤢";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:22px;color:#fff;background:rgba(46,11,27,0);opacity:0;transition:opacity .3s ease, background .3s ease;pointer-events:none;}
-  .gallery-grid .g-item:hover::after{opacity:1;background:rgba(46,11,27,0.3);}
-  .g-caption{position:absolute;left:0;right:0;bottom:0;padding:16px 10px 8px;background:linear-gradient(0deg,rgba(46,11,27,0.85),transparent);color:#fff;font-family:var(--font-base);font-size:calc(0.8rem * var(--base-scale));opacity:0;transition:opacity .3s ease;pointer-events:none;}
-  .gallery-grid .g-item:hover .g-caption{opacity:1;}
-  @media (max-width:860px){.gallery-grid{grid-template-columns:repeat(2,1fr);}}
-  .lightbox-overlay{position:fixed;inset:0;background:rgba(20,8,14,0.93);z-index:300;display:none;align-items:center;justify-content:center;padding:24px;}
-  .lightbox-overlay.show{display:flex;}
-  .lightbox-overlay img{max-width:min(92vw,900px);max-height:88vh;border-radius:6px;box-shadow:0 30px 80px rgba(0,0,0,.5);}
-  .lightbox-close{position:absolute;top:22px;right:26px;background:none;border:none;color:#fff;font-size:34px;cursor:pointer;line-height:1;}
+  /* ---------- Gallery (bento grid) ---------- */
+  .gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:210px;grid-auto-flow:dense;gap:14px;}
+  .g-item{position:relative;display:block;padding:0;border:0;font:inherit;background:var(--paper);border-radius:22px;overflow:hidden;cursor:pointer;box-shadow:0 10px 26px var(--shadow-soft);
+    transform:perspective(800px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));
+    opacity:0;translate:0 26px;scale:.95;
+    transition:transform .25s ease-out, box-shadow .3s ease, opacity .7s ease calc(var(--d,0) * 70ms), translate .7s cubic-bezier(.22,1,.36,1) calc(var(--d,0) * 70ms), scale .7s cubic-bezier(.22,1,.36,1) calc(var(--d,0) * 70ms);}
+  .g-item.in{opacity:1;translate:0 0;scale:1;}
+  .g-item:hover{box-shadow:0 22px 44px var(--shadow);}
+  .g-big{grid-column:span 2;grid-row:span 2;}
+  .g-tall{grid-row:span 2;}
+  .g-wide{grid-column:span 2;}
+  .g-full{grid-column:1 / -1;}
+  .g-item img{width:100%;height:100%;object-fit:cover;object-position:center 30%;transition:transform .8s cubic-bezier(.22,1,.36,1), filter .5s ease;}
+  .g-item:hover img{transform:scale(1.09);filter:saturate(1.18) contrast(1.04);}
+  .g-item::before{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;opacity:0;transition:opacity .3s ease;background:radial-gradient(circle at var(--mx,50%) var(--my,50%), rgba(255,255,255,.30), transparent 48%);mix-blend-mode:soft-light;}
+  .g-item:hover::before{opacity:1;}
+  .g-over{position:absolute;inset:0;z-index:3;display:flex;align-items:flex-end;justify-content:space-between;gap:10px;padding:16px;background:linear-gradient(0deg,rgba(46,11,27,.78),rgba(46,11,27,0) 55%);opacity:0;transition:opacity .35s ease;text-align:left;}
+  .g-item:hover .g-over, .g-item:focus-visible .g-over{opacity:1;}
+  .g-cap{color:#fff;font-family:var(--font-base);font-weight:600;font-size:calc(.92rem * var(--base-scale));line-height:1.3;text-shadow:0 1px 6px rgba(0,0,0,.4);}
+  .g-plus{margin-left:auto;flex:none;display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#ead08b,var(--gold));color:var(--ink);font-size:24px;line-height:1;font-weight:500;transform:scale(.7) rotate(-90deg);transition:transform .4s cubic-bezier(.22,1,.36,1);}
+  .g-item:hover .g-plus{transform:scale(1) rotate(0deg);}
+  @media (hover:none){.g-over{opacity:1;background:none;}.g-cap{display:none;}.g-plus{transform:none;width:32px;height:32px;font-size:20px;opacity:.92;}}
+  @media (max-width:760px){.gallery-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:44vw;gap:10px;}.g-item{border-radius:18px;}}
+
+  .lightbox-overlay{position:fixed;inset:0;z-index:300;display:none;align-items:center;justify-content:center;padding:24px;background:rgba(20,8,14,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);}
+  .lightbox-overlay.show{display:flex;animation:lbIn .25s ease;}
+  @keyframes lbIn{from{opacity:0;}to{opacity:1;}}
+  @keyframes lbPop{from{opacity:0;transform:scale(.96);}to{opacity:1;transform:none;}}
+  .lb-fig{margin:0;max-width:min(92vw,980px);text-align:center;}
+  .lb-fig img{max-width:100%;max-height:76vh;border-radius:18px;box-shadow:0 30px 80px rgba(0,0,0,.55);}
+  .lb-fig img.pop{animation:lbPop .35s cubic-bezier(.22,1,.36,1);}
+  .lb-fig figcaption{color:var(--cream);font-family:var(--font-base);margin-top:14px;font-size:.95rem;min-height:1.2em;}
+  .lb-btn{position:absolute;display:grid;place-items:center;width:48px;height:48px;border-radius:50%;border:1px solid rgba(250,243,236,.25);background:rgba(250,243,236,.10);color:#fff;font-size:28px;line-height:1;cursor:pointer;padding:0;transition:background .2s ease, transform .2s ease;}
+  .lb-btn:hover{background:rgba(250,243,236,.22);transform:scale(1.08);}
+  .lb-close{top:18px;right:18px;}
+  .lb-prev{left:16px;top:50%;margin-top:-24px;}
+  .lb-next{right:16px;top:50%;margin-top:-24px;}
+  .lb-count{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);color:var(--cream);font-family:var(--font-base);font-size:.85rem;letter-spacing:.12em;padding:6px 14px;border-radius:999px;background:rgba(250,243,236,.10);}
+  @media (max-width:600px){.lb-prev{left:8px;}.lb-next{right:8px;}.lb-btn{width:42px;height:42px;margin-top:-21px;}.lb-close{margin-top:0;}}
+
+  /* ---------- Team ---------- */
+  .team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,270px));justify-content:center;gap:26px;}
+  .team-card{text-align:center;}
+  .team-photo{position:relative;isolation:isolate;border-radius:26px;box-shadow:0 18px 38px var(--shadow-soft);aspect-ratio:4/5;overflow:hidden;background:var(--paper);transform:perspective(800px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .25s ease-out, box-shadow .3s ease;}
+  .team-card:hover .team-photo{box-shadow:0 26px 50px var(--shadow);}
+  .team-photo img{width:100%;height:100%;object-fit:cover;object-position:center 25%;transition:transform .8s cubic-bezier(.22,1,.36,1);}
+  .team-card:hover .team-photo img{transform:scale(1.07);}
+  .team-name{font-family:var(--font-title);font-weight:600;font-size:calc(1.3rem * var(--title-scale));color:var(--ink);margin-top:16px;}
+  .team-role{display:inline-block;margin-top:8px;padding:5px 14px;border-radius:999px;background:linear-gradient(135deg,var(--maroon),var(--maroon-deep));color:var(--cream);font-family:var(--font-base);font-size:calc(.78rem * var(--base-scale));font-weight:600;letter-spacing:.06em;text-transform:uppercase;}
+  .team-bio{font-family:var(--font-body);color:var(--ink-soft);font-size:calc(.95rem * var(--body-scale));line-height:1.6;margin-top:12px;}
 
   /* ---------- Booking ---------- */
   .booking-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;}
@@ -259,11 +302,18 @@
   @media (prefers-reduced-motion: reduce){
     html{scroll-scroll-behavior:auto;scroll-behavior:auto;} .hero-logo,.hero-title,.hero-bgzoom{animation:none !important;} *{animation-duration:0.01ms !important;}
   }
+
+  /* ---- Language switch (always visible, bottom-right) ---- */
+  .lang-pill{position:fixed;right:14px;bottom:14px;z-index:90;display:flex;gap:2px;padding:4px;border-radius:999px;background:rgba(43,20,32,.84);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 8px 24px rgba(0,0,0,.3);border:1px solid rgba(250,243,236,.18);}
+  .lang-pill button{border:0;background:transparent;color:var(--cream);font-family:var(--font-base);font-weight:700;font-size:.82rem;letter-spacing:.06em;padding:9px 14px;min-width:46px;border-radius:999px;cursor:pointer;transition:background .2s ease,color .2s ease;}
+  .lang-pill button[aria-pressed="true"]{background:linear-gradient(135deg,#ead08b,var(--gold));color:var(--ink);}
+  @media (prefers-reduced-motion: reduce){.g-item{opacity:1 !important;translate:none !important;scale:1 !important;transform:none !important;}.g-item img{transition:none !important;}}
 </style>
 </head>
 <body>
 
 <nav class="tabnav" id="tabnav" aria-label="Section navigation">
+  <a class="nav-brand" id="navBrand" href="#home">Rivas <b>Super</b> Salon</a>
   <div class="tabnav-inner" id="tabnavInner">
     <a href="#home" class="active">Home</a>
     <a href="#about">About</a>
@@ -273,8 +323,12 @@
     <a href="#location">Location</a>
     <a href="#faq">FAQ</a>
   </div>
+  <a class="nav-cta" id="navCta" href="#booking">Book Now</a>
 </nav>
-<div id="google_translate_element"></div>
+<div class="lang-pill" role="group" aria-label="Language">
+  <button type="button" data-lang="en" aria-pressed="true">EN</button>
+  <button type="button" data-lang="es" aria-pressed="false">ES</button>
+</div>
 
 <header class="hero" id="home">
   <div class="hero-bgzoom" id="heroBgZoom" aria-hidden="true"></div>
@@ -306,6 +360,13 @@
   </div>
 </section>
 
+<section id="team" hidden>
+  <div class="section-inner">
+    <div class="section-head"><span class="kicker" id="teamKicker">Meet the Team</span><h2 class="display" id="teamTitle">Meet Your Stylists</h2></div>
+    <div class="team-grid" id="teamGrid"></div>
+  </div>
+</section>
+
 <section class="section-alt" id="booking">
   <div class="section-inner">
     <div class="section-head"><span class="kicker" id="bookingKicker">Ready when you are</span><h2 class="display" id="bookingTitle">Book an Appointment</h2></div>
@@ -316,19 +377,19 @@
         <p id="formText"></p>
         <form class="book-form" id="bookForm">
           <div class="form-row">
-            <div class="fld"><label for="f_name">Name</label><input type="text" id="f_name" placeholder="Your name" required></div>
-            <div class="fld"><label for="f_phone">Phone</label><input type="tel" id="f_phone" placeholder="(xxx) xxx-xxxx" required></div>
+            <div class="fld"><label for="f_name" data-i18n="f_name">Name</label><input type="text" id="f_name" placeholder="Your name" data-i18n-ph="f_name_ph" required></div>
+            <div class="fld"><label for="f_phone" data-i18n="f_phone">Phone</label><input type="tel" id="f_phone" placeholder="(xxx) xxx-xxxx" required></div>
           </div>
-          <div class="fld"><label for="f_service">Service</label><select id="f_service"></select></div>
+          <div class="fld"><label for="f_service" data-i18n="f_service">Service</label><select id="f_service"></select></div>
           <div class="fld" id="f_staff_wrap" hidden><label for="f_staff" id="f_staff_label">Preferred stylist</label><select id="f_staff"></select></div>
           <div class="form-row" id="f_when_wrap" hidden>
-            <div class="fld"><label for="f_date">Preferred date</label><input type="date" id="f_date"></div>
-            <div class="fld"><label for="f_time">Preferred time</label><select id="f_time"><option value="">Pick a date first</option></select></div>
+            <div class="fld"><label for="f_date" data-i18n="f_date">Preferred date</label><input type="date" id="f_date"></div>
+            <div class="fld"><label for="f_time" data-i18n="f_time">Preferred time</label><select id="f_time"><option value="">Pick a date first</option></select></div>
           </div>
-          <div class="fld" id="f_lang_wrap"><label for="f_lang">Text which number?</label><select id="f_lang"></select></div>
-          <div class="fld"><label for="f_notes">Notes (preferred day/time, extension method, etc.)</label><textarea id="f_notes" rows="3" placeholder="e.g. Saturday afternoon, BYO extensions wax method..."></textarea></div>
+          <div class="fld" id="f_lang_wrap"><label for="f_lang" data-i18n="f_lang">Text which number?</label><select id="f_lang"></select></div>
+          <div class="fld"><label for="f_notes" data-i18n="f_notes">Notes (preferred day/time, extension method, etc.)</label><textarea id="f_notes" rows="3" placeholder="e.g. Saturday afternoon, BYO extensions wax method..." data-i18n-ph="f_notes_ph"></textarea></div>
           <div style="display:flex;gap:12px;flex-wrap:wrap;">
-            <button type="submit" class="btn btn-primary" id="formSubmitBtn">Send Request by Text</button>
+            <button type="submit" class="btn btn-primary" id="formSubmitBtn" data-i18n="send_text">Send Request by Text</button>
             <button type="button" class="btn btn-outline-dark" id="formEmailBtn" hidden>Email Instead</button>
           </div>
         </form>
@@ -362,9 +423,12 @@
 
 <footer id="footerContent"></footer>
 
-<div class="lightbox-overlay" id="lightbox">
-  <button class="lightbox-close" id="lightboxClose" aria-label="Close">&times;</button>
-  <img id="lightboxImg" src="" alt="Gallery photo enlarged">
+<div class="lightbox-overlay" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <button type="button" class="lb-btn lb-close" id="lightboxClose" aria-label="Close">&times;</button>
+  <button type="button" class="lb-btn lb-prev" id="lightboxPrev" aria-label="Previous photo">&#8249;</button>
+  <figure class="lb-fig"><img id="lightboxImg" src="" alt=""><figcaption id="lightboxCap"></figcaption></figure>
+  <button type="button" class="lb-btn lb-next" id="lightboxNext" aria-label="Next photo">&#8250;</button>
+  <div class="lb-count" id="lightboxCount"></div>
 </div>
 
 <!-- Netlify Identity: required so invite-link emails land you logged in at /admin.
@@ -376,9 +440,7 @@
   }
 </script>
 
-<!-- Google Translate widget: powers the "Translate to Spanish" button. We hide its default
-     UI with CSS and drive it ourselves so visitors only ever see our own button. -->
-<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
 
 <script>
 
@@ -406,7 +468,7 @@
 
   // ---------- Page layout: the ordered list of sections/tabs, controlled from /admin ----------
   const BUILTIN_LABELS = {
-    about:'About', services:'Services', gallery:'Gallery',
+    about:'About', services:'Services', gallery:'Gallery', team:'Our Team',
     booking:'Book Now', location:'Location', faq:'FAQ', contact:'Contact'
   };
   const DEFAULT_LAYOUT = Object.keys(BUILTIN_LABELS).map(k => (
@@ -460,6 +522,11 @@
     return sec;
   }
 
+  // Only people WITH a photo are shown on the page (no empty frames).
+  function teamMembers(data){
+    return ((data.team && data.team.members) || []).filter(m => m && m.photo && String(m.photo).trim());
+  }
+
   function buildLayout(data, site){
     const main = document.getElementById('sections');
     main.querySelectorAll('[data-custom]').forEach(n => n.remove());
@@ -468,7 +535,7 @@
     const used = new Set(['home','sections','tabnav','tabnavInner', ...Object.keys(BUILTIN_LABELS)]);
     const placed = new Set();
     const visibleNodes = [];
-    const tabs = [{id:'home', label: site.homeNavLabel || 'Home'}];
+    const tabs = [{id:'home', label: site.homeNavLabel || t('nav_home')}];
 
     items.forEach(item => {
       if(!item) return;
@@ -479,7 +546,7 @@
         node = document.getElementById(id);
         if(!node) return;
         placed.add(id);
-        label = label || BUILTIN_LABELS[id];
+        label = (LANG === 'es') ? t('nav_' + id) : (label || BUILTIN_LABELS[id]);
       }else{
         const base = slugify(item.navLabel || item.heading);
         id = base; let n = 2;
@@ -489,7 +556,7 @@
         label = label || item.heading || 'Section';
       }
       main.appendChild(node);
-      const show = item.visible !== false;
+      const show = item.visible !== false && !(id === 'team' && teamMembers(data).length === 0);
       node.hidden = !show;
       if(show){
         visibleNodes.push({node, item});
@@ -612,20 +679,13 @@
     h = h % 12 || 12;
     return `${h}:${String(m).padStart(2, '0')} ${ap}`;
   }
-  function whenText(){
-    const d = document.getElementById('f_date').value;
-    const t = document.getElementById('f_time').value;
-    if(!d || !t) return '';
-    const [y, mo, da] = d.split('-').map(Number);
-    const label = new Date(y, mo - 1, da).toLocaleDateString('en-US', {weekday:'short', month:'short', day:'numeric'});
-    return `${label} at ${t}`;
-  }
-
   function render(data){
     const settings = data.settings || {};
     const site = data.site || {};
     const colors = settings.colors || {};
     const typo = settings.typography || {};
+    applyStaticI18n();
+    const keep = {svc: valOf('f_service'), staff: valOf('f_staff'), tel: valOf('f_lang'), date: valOf('f_date'), time: valOf('f_time')};
 
     const colorMap = {
       sunset1:'--sunset-1', sunset2:'--sunset-2', sunset3:'--sunset-3',
@@ -655,6 +715,9 @@
     if(typo.bodyColor) root.setProperty('--ink-soft', typo.bodyColor);
 
     const layout = buildLayout(data, site);
+    { const cta = document.getElementById('navCta'); if(cta) cta.textContent = t('nav_booking');
+      const br = document.getElementById('navBrand'); const nm = (data.hero && data.hero.title) || 'Rivas Super Salon'; const w = String(nm).split(' ');
+      if(br) br.innerHTML = w.length === 3 ? esc(w[0]) + ' <b>' + esc(w[1]) + '</b> ' + esc(w[2]) : esc(nm); }
     document.getElementById('tabnavInner').innerHTML = layout.tabs.map((t, i) =>
       `<a href="#${esc(t.id)}"${i === 0 ? ' class="active"' : ''}>${esc(t.label)}</a>`).join('');
 
@@ -736,8 +799,8 @@
         : `<h1 class="display hero-title anim-${esc(animOption)}">${esc(data.hero.title)}</h1>`}
       ${data.hero.subtitle ? `<p class="hero-subtitle">${esc(data.hero.subtitle)}</p>` : ''}
       ${metaBits.length ? `<p class="hero-meta">${metaBits.map(esc).join('<span class="dot">★</span>')}</p>` : ''}
-      ${layout.visible.has('booking') ? `<a href="#booking" class="btn btn-primary">${esc(site.heroPrimaryButton || 'Book an Appointment')}</a>` : ''}
-      ${layout.visible.has('services') ? `<a href="#services" class="btn btn-outline"${layout.visible.has('booking') ? ' style="margin-left:14px;"' : ''}>${esc(site.heroSecondaryButton || 'See Services')}</a>` : ''}
+      ${layout.visible.has('booking') ? `<a href="#booking" class="btn btn-primary">${esc(site.heroPrimaryButton || t('book_cta'))}</a>` : ''}
+      ${layout.visible.has('services') ? `<a href="#services" class="btn btn-outline"${layout.visible.has('booking') ? ' style="margin-left:14px;"' : ''}>${esc(site.heroSecondaryButton || t('see_services'))}</a>` : ''}
     `;
 
     // About
@@ -754,15 +817,16 @@
       <div class="about-text">
         <button type="button" class="translate-btn" id="translateToggle">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"/></svg>
-          <span class="full-label">Translate to Spanish</span>
+          <span class="full-label">${esc(t(LANG === 'es' ? 'toggle_to_en' : 'toggle_to_es'))}</span>
         </button>
         <span class="about-kicker">${esc(data.about.kicker)}</span>
         ${paras}
         <div class="stat-row">${stats}</div>
       </div>
-      ${aboutFile ? `<div class="about-video"><video controls playsinline preload="metadata"${aboutPoster ? ` poster="${esc(aboutPoster)}"` : ''} src="${esc(aboutFile)}">Your browser can't play this video.</video></div>` : aboutVid ? `<div class="about-video"><iframe src="https://www.youtube.com/embed/${esc(aboutVid)}" title="Rivas Super Salon video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>` : (data.about.photo ? `<div class="about-photo"><img src="${esc(data.about.photo)}" alt="Salon photo"></div>` : '')}
+      ${aboutFile ? `<div class="about-video"><video controls playsinline preload="metadata"${aboutPoster ? ` poster="${esc(aboutPoster)}"` : ''} src="${esc(aboutFile)}">Your browser can't play this video.</video></div>` : aboutVid ? `<div class="about-video"><iframe src="https://www.youtube.com/embed/${esc(aboutVid)}" title="Rivas Super Salon video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>` : (data.about.photo ? `<div class="about-photo" data-tilt><img src="${esc(data.about.photo)}" alt="${esc(t('photo_alt'))}"></div>` : '')}
     `;
-    attachTranslateToggle();
+    const toggleBtn = document.getElementById('translateToggle');
+    if(toggleBtn) toggleBtn.addEventListener('click', () => setLang(LANG === 'es' ? 'en' : 'es'));
 
     // Services (category tabs)
     const cats = data.serviceCategories || [];
@@ -792,25 +856,38 @@
 
     // Service dropdown in booking form
     const svcSelect = document.getElementById('f_service');
-    svcSelect.innerHTML = cats.map(c => `<optgroup label="${esc(c.title)}">${(c.items||[]).map(it => `<option value="${esc(it.name)} (${esc(it.price)})">${esc(it.name)} — ${esc(it.price)}</option>`).join('')}</optgroup>`).join('');
+    svcSelect.innerHTML = cats.map((c, ci) => `<optgroup label="${esc(c.title)}">${(c.items||[]).map((it, ii) => `<option value="${ci}|${ii}">${esc(it.name)} — ${esc(it.price)}${esc(it.unit || '')}</option>`).join('')}</optgroup>`).join('');
+    restoreSel(svcSelect, keep.svc);
 
-    // Gallery
+    // Gallery (bento grid + lightbox)
     const photos = (data.gallery && data.gallery.photos || []).filter(p => p && p.img);
+    LB.photos = photos;
+    // Repeating bento pattern; the last few photos use shapes that fill their final row(s) with no gaps.
+    const BENTO = ['g-big', '', '', 'g-tall', '', 'g-wide', ''];
+    const TAIL = {1:['g-full'], 2:['g-wide','g-wide'], 3:['g-wide','',''], 4:['','','',''], 5:['g-big','','','',''], 6:['g-tall','g-tall','','','','']};
+    const fullCycles = Math.floor(photos.length / 7) * 7;
+    const shapeOf = i => (i < fullCycles) ? BENTO[i % 7] : ((TAIL[photos.length - fullCycles] || [])[i - fullCycles] || '');
     document.getElementById('galleryGrid').innerHTML = photos.map((p, i) => `
-      <div class="g-item" data-photo="${i}">
-        <img src="${esc(p.img)}" alt="${esc(p.caption || 'Salon work')}" loading="lazy">
-        ${p.caption ? `<div class="g-caption">${esc(p.caption)}</div>` : ''}
-      </div>`).join('');
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightboxImg');
+      <button type="button" class="g-item ${shapeOf(i)}" data-photo="${i}" data-tilt style="--d:${i % 4}" aria-label="${esc(p.caption || (t('work_alt') + ' ' + (i + 1)))}">
+        <img src="${esc(p.img)}" alt="${esc(p.caption || t('work_alt'))}" loading="lazy">
+        <span class="g-over">${p.caption ? `<span class="g-cap">${esc(p.caption)}</span>` : ''}<span class="g-plus" aria-hidden="true">+</span></span>
+      </button>`).join('');
     document.querySelectorAll('#galleryGrid .g-item').forEach(el => {
-      el.addEventListener('click', () => {
-        const idx = Number(el.getAttribute('data-photo'));
-        lightboxImg.src = photos[idx].img;
-        lightboxImg.alt = photos[idx].caption || 'Salon work';
-        lightbox.classList.add('show');
-      });
+      el.addEventListener('click', () => openLightbox(Number(el.getAttribute('data-photo'))));
     });
+    revealGallery();
+
+    // Meet the Team
+    const tm = teamMembers(data);
+    text('teamKicker', (data.team || {}).kicker);
+    text('teamTitle', (data.team || {}).heading);
+    document.getElementById('teamGrid').innerHTML = tm.map(m => `
+      <article class="team-card">
+        <div class="team-photo" data-tilt><img src="${esc(m.photo)}" alt="${esc(m.name || '')}${m.role ? ' — ' + esc(m.role) : ''}" loading="lazy"></div>
+        ${m.name ? `<h3 class="team-name">${esc(m.name)}</h3>` : ''}
+        ${m.role ? `<span class="team-role">${esc(m.role)}</span>` : ''}
+        ${m.bio ? `<p class="team-bio">${esc(m.bio)}</p>` : ''}
+      </article>`).join('');
 
     // Booking band
     const booking = data.booking || {};
@@ -818,17 +895,17 @@
     const bookBand = document.getElementById('bookBand');
     const hasOnline = !!(booking.bookingUrl || '').trim();
     bookBand.innerHTML = `
-      <div class="eyebrow2">${hasOnline ? 'Reserve online' : 'Call, text, or walk in'}</div>
-      <h3>${hasOnline ? esc(booking.payOnlineLabel || 'Book & Pay Online') : (booking.callToBookHeading ? esc(booking.callToBookHeading) : 'Prefer to call or text?')}</h3>
-      <p>${esc(booking.bookingNote || "Book online to reserve and pay ahead, or call, text, or walk in — you're always welcome to pay in person.")}</p>
-      ${hasOnline ? `<a id="bookOnlineBtn" class="btn-book" href="${esc(safeExternalUrl(booking.bookingUrl))}" target="_blank" rel="noopener noreferrer">${esc(booking.payOnlineLabel || 'Book & Pay Online')}</a>` : ''}
+      <div class="eyebrow2">${esc(hasOnline ? t('reserve_online') : t('call_text_walk'))}</div>
+      <h3>${hasOnline ? esc(booking.payOnlineLabel || t('book_pay_online')) : esc(booking.callToBookHeading || t('prefer_call'))}</h3>
+      <p>${esc(booking.bookingNote || t('booking_note'))}</p>
+      ${hasOnline ? `<a id="bookOnlineBtn" class="btn-book" href="${esc(safeExternalUrl(booking.bookingUrl))}" target="_blank" rel="noopener noreferrer">${esc(booking.payOnlineLabel || t('book_pay_online'))}</a>` : ''}
       ${phones.length ? `<div class="call-grid">${phones.map(p => `<a class="call-card" href="${esc(p.href)}"><b>${esc(p.display)}</b><span>${esc(p.label)}</span></a>`).join('')}</div>` : ''}
     `;
 
     // Request form heading/text + language select
-    text('formHeading', booking.formHeading || 'Request an Appointment');
+    text('formHeading', booking.formHeading || t('req_heading'));
     const formTextEl = document.getElementById('formText');
-    formTextEl.textContent = booking.formText || "Fill this out and it opens as a text message straight to us — we'll confirm your time.";
+    formTextEl.textContent = booking.formText || t('req_text');
     const langWrap = document.getElementById('f_lang_wrap');
     const langSelect = document.getElementById('f_lang');
     const defaultTarget = (booking.defaultTextTarget || '').trim();
@@ -842,19 +919,22 @@
       langWrap.hidden = true;
       langSelect.innerHTML = '';
     }
+    restoreSel(langSelect, keep.tel);
     const submitBtn = document.getElementById('formSubmitBtn');
     submitBtn.disabled = phones.length === 0;
-    if(phones.length === 0) submitBtn.textContent = 'Texting unavailable — call us instead';
+    if(phones.length === 0) submitBtn.textContent = t('no_texting');
 
     // Stylist picker (hidden until at least one name is added in /admin)
-    const staffNames = (booking.staff || [])
-      .map(s => (typeof s === 'string') ? s : (s && s.name) || '')
-      .map(s => s.trim()).filter(Boolean);
+    const staffNames = Array.from(new Set(
+      (booking.staff || []).concat((data.team && data.team.members) || [])
+        .map(s => (typeof s === 'string') ? s : (s && s.name) || '')
+        .map(s => s.trim()).filter(Boolean)));
     const staffWrap = document.getElementById('f_staff_wrap');
     const staffSelect = document.getElementById('f_staff');
     staffWrap.hidden = staffNames.length === 0;
-    document.getElementById('f_staff_label').textContent = booking.staffLabel || 'Preferred stylist';
-    staffSelect.innerHTML = `<option value="">No preference</option>` + staffNames.map(n => `<option value="${esc(n)}">${esc(n)}</option>`).join('');
+    document.getElementById('f_staff_label').textContent = booking.staffLabel || t('f_staff');
+    staffSelect.innerHTML = `<option value="">${esc(t('no_pref'))}</option>` + staffNames.map(n => `<option value="${esc(n)}">${esc(n)}</option>`).join('');
+    restoreSel(staffSelect, keep.staff);
 
     // Calendar: pick a date, then only the times that are still open are offered.
     // Times she blocks in /admin (Book Now -> Blocked times) disappear from the list.
@@ -891,7 +971,7 @@
       });
       const refreshTimes = () => {
         const v = dateInput.value;
-        if(!v){ timeSelect.innerHTML = '<option value="">Pick a date first</option>'; return; }
+        if(!v){ timeSelect.innerHTML = `<option value="">${esc(t('pick_date'))}</option>`; return; }
         const times = [];
         if(blocked[v] !== 'all'){
           const nowMin = today.getHours() * 60 + today.getMinutes() + 60;
@@ -902,19 +982,20 @@
           }
         }
         timeSelect.innerHTML = times.length
-          ? '<option value="">Choose a time</option>' + times.map(t => `<option value="${esc(fmtMin(t))}">${esc(fmtMin(t))}</option>`).join('')
-          : '<option value="">No openings that day — try another date</option>';
+          ? `<option value="">${esc(t('choose_time'))}</option>` + times.map(t => `<option value="${esc(fmtMin(t))}">${esc(fmtMin(t))}</option>`).join('')
+          : `<option value="">${esc(t('no_openings'))}</option>`;
       };
       dateInput.onchange = refreshTimes;
-      dateInput.value = '';
+      dateInput.value = keep.date || '';
       refreshTimes();
+      restoreSel(timeSelect, keep.time);
     }
 
     // Email fallback button
     const emailBtn = document.getElementById('formEmailBtn');
     const notifyEmail = (booking.notifyEmail || '').trim();
     emailBtn.hidden = !notifyEmail;
-    emailBtn.textContent = booking.formEmailButtonText || 'Email Instead';
+    emailBtn.textContent = booking.formEmailButtonText || t('email_instead');
     emailBtn.dataset.notifyEmail = notifyEmail;
 
     // Contact
@@ -929,14 +1010,14 @@
     const emailBox = document.getElementById('contactEmail');
     emailBox.hidden = !emailAddr;
     if(emailAddr){
-      emailBox.innerHTML = `<span class="ce-label">${esc(ct.emailLabel || 'Questions? Email us anytime')}</span><a href="mailto:${esc(emailAddr)}">${CI.mail}<span>${esc(emailAddr)}</span></a>`;
+      emailBox.innerHTML = `<span class="ce-label">${esc(ct.emailLabel || t('email_label'))}</span><a href="mailto:${esc(emailAddr)}">${CI.mail}<span>${esc(emailAddr)}</span></a>`;
     }
     document.getElementById('contactGrid').innerHTML = (ct.cards || []).filter(c => c && c.title && c.link).map((c, i) => {
       const href = safeLink(c.link);
       const isTelOrMail = /^(tel:|mailto:)/i.test(href);
       const ext = /^https?:/i.test(href) || /\.pdf($|\?)/i.test(href);
       const icon = /^tel:/i.test(href) ? CI.phone : (/^mailto:/i.test(href) ? CI.mail : CI.pin);
-      return `<div class="contact-card"><div class="cc-icon">${icon}</div><h3>${esc(c.title)}</h3><p>${esc(c.desc || '')}</p><a class="cc-btn" href="${esc(href)}"${ext && !isTelOrMail ? ' target="_blank" rel="noopener noreferrer"' : ''}><span>${esc(c.button || 'Learn More')}</span></a></div>`;
+      return `<div class="contact-card"><div class="cc-icon">${icon}</div><h3>${esc(c.title)}</h3><p>${esc(c.desc || '')}</p><a class="cc-btn" href="${esc(href)}"${ext && !isTelOrMail ? ' target="_blank" rel="noopener noreferrer"' : ''}><span>${esc(c.button || t('learn_more'))}</span></a></div>`;
     }).join('');
 
     // Location
@@ -945,7 +1026,7 @@
       ${(data.location.paragraphs || []).map(p => `<p>${esc(p)}</p>`).join('')}
       <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(data.location.mapQuery)}"
          target="_blank" rel="noopener noreferrer"
-         class="btn btn-outline" style="border-color:var(--maroon);color:var(--maroon);">${esc(site.directionsButtonText || 'Get Directions')}</a>
+         class="btn btn-outline" style="border-color:var(--maroon);color:var(--maroon);">${esc(site.directionsButtonText || t('directions'))}</a>
     `;
     document.getElementById('mapFrame').innerHTML = `<iframe src="https://maps.google.com/maps?q=${encodeURIComponent(data.location.mapQuery)}&t=&z=14&ie=UTF8&iwloc=&output=embed" title="Map" loading="lazy"></iframe>`;
 
@@ -971,21 +1052,221 @@
     `;
 
     initTracking(data);
-    initInteractions(data);
+    wireFaq();
+    initTilt();
+    wireOnce();
+    onScroll();
+    renderedOnce = true;
   }
 
-  function initInteractions(data){
-    const navLinks = Array.from(document.querySelectorAll('.tabnav a'));
-    const sections = navLinks.map(l => document.getElementById((l.getAttribute('href') || '').slice(1)));
-    function onScroll(){
-      let current = sections[0];
-      const y = window.scrollY + 120;
-      sections.forEach(sec => { if(sec && !sec.hidden && sec.offsetTop <= y) current = sec; });
-      navLinks.forEach(l => l.classList.toggle('active', !!current && l.getAttribute('href') === '#' + current.id));
+  // ---------- Language: English / Spanish (built in, no outside translator) ----------
+  const UI = {
+    en: {
+      nav_home:'Home', nav_about:'About', nav_services:'Services', nav_gallery:'Gallery', nav_team:'Our Team', nav_booking:'Book Now', nav_location:'Location', nav_faq:'FAQ', nav_contact:'Contact',
+      toggle_to_es:'Translate to Spanish', toggle_to_en:'Switch to English',
+      f_name:'Name', f_name_ph:'Your name', f_phone:'Phone', f_service:'Service', f_staff:'Preferred stylist', f_date:'Preferred date', f_time:'Preferred time',
+      f_lang:'Text which number?', f_notes:'Notes (preferred day/time, extension method, etc.)', f_notes_ph:'e.g. Saturday afternoon, BYO extensions wax method...',
+      send_text:'Send Request by Text', email_instead:'Email Instead', no_texting:'Texting unavailable — call us instead',
+      no_pref:'No preference', pick_date:'Pick a date first', choose_time:'Choose a time', no_openings:'No openings that day — try another date',
+      reserve_online:'Reserve online', call_text_walk:'Call, text, or walk in', prefer_call:'Prefer to call or text?',
+      book_pay_online:'Book & Pay Online', booking_note:"Book online to reserve and pay ahead, or call, text, or walk in — you're always welcome to pay in person.",
+      req_heading:'Request an Appointment', req_text:"Pick a date and time, and this opens as a text message straight to us — we'll confirm your spot.",
+      learn_more:'Learn More', email_label:'Questions? Email us anytime', directions:'Get Directions', book_cta:'Book an Appointment', see_services:'See Services',
+      photo_alt:'Salon photo', work_alt:'Salon work', err_unavailable:'Site information is temporarily unavailable.'
+    },
+    es: {
+      nav_home:'Inicio', nav_about:'Nosotros', nav_services:'Servicios', nav_gallery:'Galería', nav_team:'Equipo', nav_booking:'Reservar', nav_location:'Ubicación', nav_faq:'Preguntas', nav_contact:'Contacto',
+      toggle_to_es:'Translate to Spanish', toggle_to_en:'Cambiar a Inglés',
+      f_name:'Nombre', f_name_ph:'Tu nombre', f_phone:'Teléfono', f_service:'Servicio', f_staff:'Estilista preferido', f_date:'Fecha preferida', f_time:'Hora preferida',
+      f_lang:'¿A qué número mandamos el texto?', f_notes:'Notas (día/hora preferida, método de extensiones, etc.)', f_notes_ph:'ej. sábado por la tarde, mis extensiones con método de cera...',
+      send_text:'Enviar Solicitud por Texto', email_instead:'Mejor por Correo', no_texting:'Texto no disponible — llámanos',
+      no_pref:'Sin preferencia', pick_date:'Elige una fecha primero', choose_time:'Elige una hora', no_openings:'No hay horarios ese día — prueba otra fecha',
+      reserve_online:'Reserva en línea', call_text_walk:'Llama, manda texto o ven directo', prefer_call:'¿Prefieres llamar o mandar texto?',
+      book_pay_online:'Reserva y Paga en Línea', booking_note:'Reserva en línea para apartar tu lugar y pagar por adelantado, o llama, manda texto o ven directo: siempre puedes pagar en persona.',
+      req_heading:'Solicita una Cita', req_text:'Elige fecha y hora y se abrirá un mensaje de texto directo para nosotros. Confirmaremos tu lugar.',
+      learn_more:'Más Información', email_label:'¿Preguntas? Escríbenos cuando quieras', directions:'Cómo Llegar', book_cta:'Reserva una Cita', see_services:'Ver Servicios',
+      photo_alt:'Foto del salón', work_alt:'Trabajo del salón', err_unavailable:'La información del sitio no está disponible por el momento.'
     }
-    window.addEventListener('scroll', onScroll, {passive:true});
-    onScroll();
+  };
 
+  // Wording of the text message / email that customers send (follows the language of whoever receives it)
+  const MSG = {
+    en: {locale:'en-US', at:'at', hi:"Hi! I'd like to book:", stylist:'Stylist', when:'Preferred time', name:'Name', phone:'Phone', notes:'Notes', service:'Service', whenLabel:'When', subject:'Appointment Request'},
+    es: {locale:'es-US', at:'a las', hi:'¡Hola! Quisiera reservar:', stylist:'Estilista', when:'Fecha y hora preferida', name:'Nombre', phone:'Teléfono', notes:'Notas', service:'Servicio', whenLabel:'Cuándo', subject:'Solicitud de cita'}
+  };
+
+  const DATA = {en: null, es: null};
+  let LANG = 'en';
+  let renderedOnce = false;
+  const LB = {photos: [], idx: 0};
+
+  function t(key){ return (UI[LANG] && UI[LANG][key]) || UI.en[key] || key; }
+  function valOf(id){ const el = document.getElementById(id); return el ? el.value : ''; }
+  function restoreSel(sel, v){ if(sel && v && Array.from(sel.options).some(o => o.value === v)) sel.value = v; }
+
+  // Spanish file only holds the words that differ; anything missing falls back to English.
+  function mergeDeep(base, over){
+    if(over === undefined || over === null || over === '') return base;
+    if(Array.isArray(base)){
+      if(!Array.isArray(over)) return base;
+      return base.map((b, i) => (i < over.length) ? mergeDeep(b, over[i]) : b);
+    }
+    if(base && typeof base === 'object'){
+      if(typeof over !== 'object' || Array.isArray(over)) return base;
+      const out = Object.assign({}, base);
+      Object.keys(over).forEach(k => { out[k] = mergeDeep(base[k], over[k]); });
+      return out;
+    }
+    return over;
+  }
+
+  function applyStaticI18n(){
+    document.querySelectorAll('[data-i18n]').forEach(el => { el.textContent = t(el.getAttribute('data-i18n')); });
+    document.querySelectorAll('[data-i18n-ph]').forEach(el => { el.setAttribute('placeholder', t(el.getAttribute('data-i18n-ph'))); });
+    document.querySelectorAll('.lang-pill [data-lang]').forEach(b => b.setAttribute('aria-pressed', String(b.getAttribute('data-lang') === LANG)));
+    document.documentElement.lang = LANG;
+  }
+
+  function setLang(l){
+    if(!DATA.en) return;
+    LANG = (l === 'es') ? 'es' : 'en';
+    try{ localStorage.setItem('rivasLang', LANG); }catch(e){}
+    render(DATA[LANG]);
+  }
+
+  function initialLang(){
+    try{
+      const q = new URLSearchParams(window.location.search).get('lang');
+      if(q === 'es' || q === 'en') return q;
+    }catch(e){}
+    try{
+      const saved = localStorage.getItem('rivasLang');
+      if(saved === 'es' || saved === 'en') return saved;
+    }catch(e){}
+    return 'en';
+  }
+
+  // ---------- Building the text / email a customer sends ----------
+  function serviceLabel(value, lang){
+    const parts = String(value || '').split('|').map(Number);
+    const d = DATA[lang] || DATA.en || {};
+    const cat = (d.serviceCategories || [])[parts[0]];
+    const it = cat && (cat.items || [])[parts[1]];
+    return it ? `${it.name} (${it.price}${it.unit || ''})` : '';
+  }
+
+  // The Spanish phone line gets a Spanish message; the English line gets English.
+  function recipientLang(telHref){
+    const sp = ((DATA.en && DATA.en.booking && DATA.en.booking.spanishLineTarget) || '').trim();
+    if(sp) return telHref === sp ? 'es' : 'en';
+    return LANG;
+  }
+
+  function whenText(lang){
+    const d = valOf('f_date'), tm = valOf('f_time');
+    if(!d || !tm) return '';
+    const m = MSG[lang] || MSG.en;
+    const [y, mo, da] = d.split('-').map(Number);
+    const label = new Date(y, mo - 1, da).toLocaleDateString(m.locale, {weekday:'short', month:'short', day:'numeric'});
+    return `${label} ${m.at} ${tm}`;
+  }
+
+  function composeSms(lang){
+    const m = MSG[lang] || MSG.en;
+    const stylist = valOf('f_staff'), when = whenText(lang), notes = valOf('f_notes').trim();
+    return `${m.hi} ${serviceLabel(valOf('f_service'), lang)}.`
+      + (stylist ? ` ${m.stylist}: ${stylist}.` : '')
+      + (when ? ` ${m.when}: ${when}.` : '')
+      + ` ${m.name}: ${valOf('f_name').trim()}. ${m.phone}: ${valOf('f_phone').trim()}.`
+      + (notes ? ` ${m.notes}: ${notes}` : '');
+  }
+
+  function composeEmail(lang){
+    const m = MSG[lang] || MSG.en;
+    const name = valOf('f_name').trim(), stylist = valOf('f_staff'), when = whenText(lang), notes = valOf('f_notes').trim();
+    return {
+      subject: `${m.subject}${name ? ' — ' + name : ''}`,
+      body: `${m.name}: ${name}\n${m.phone}: ${valOf('f_phone').trim()}\n${m.service}: ${serviceLabel(valOf('f_service'), lang)}\n`
+        + (when ? `${m.whenLabel}: ${when}\n` : '')
+        + (stylist ? `${m.stylist}: ${stylist}\n` : '')
+        + (notes ? `${m.notes}: ${notes}` : '')
+    };
+  }
+
+  // ---------- Photos: scroll-in reveal, tilt, lightbox ----------
+  function revealGallery(){
+    const items = Array.from(document.querySelectorAll('#galleryGrid .g-item'));
+    if(renderedOnce || !('IntersectionObserver' in window)){ items.forEach(i => i.classList.add('in')); return; }
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(en => { if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
+    }, {threshold: 0.12, rootMargin: '0px 0px -6% 0px'});
+    items.forEach(i => io.observe(i));
+    setTimeout(() => items.forEach(i => i.classList.add('in')), 6000);
+  }
+
+  function initTilt(){
+    if(!window.matchMedia) return;
+    if(!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    document.querySelectorAll('[data-tilt]').forEach(el => {
+      el.addEventListener('pointermove', e => {
+        const r = el.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width - 0.5;
+        const y = (e.clientY - r.top) / r.height - 0.5;
+        el.style.setProperty('--rx', (-y * 7).toFixed(2) + 'deg');
+        el.style.setProperty('--ry', (x * 7).toFixed(2) + 'deg');
+        el.style.setProperty('--mx', ((x + 0.5) * 100).toFixed(1) + '%');
+        el.style.setProperty('--my', ((y + 0.5) * 100).toFixed(1) + '%');
+      });
+      el.addEventListener('pointerleave', () => {
+        el.style.setProperty('--rx', '0deg');
+        el.style.setProperty('--ry', '0deg');
+      });
+    });
+  }
+
+  function paintLightbox(){
+    const p = LB.photos[LB.idx];
+    if(!p) return;
+    const img = document.getElementById('lightboxImg');
+    img.classList.remove('pop');
+    void img.offsetWidth;
+    img.src = p.img;
+    img.alt = p.caption || t('work_alt');
+    img.classList.add('pop');
+    document.getElementById('lightboxCap').textContent = p.caption || '';
+    document.getElementById('lightboxCount').textContent = `${LB.idx + 1} / ${LB.photos.length}`;
+    const next = LB.photos[(LB.idx + 1) % LB.photos.length];
+    if(next){ const pre = new Image(); pre.src = next.img; }
+  }
+  function openLightbox(i){
+    LB.idx = i;
+    paintLightbox();
+    document.getElementById('lightbox').classList.add('show');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox(){
+    document.getElementById('lightbox').classList.remove('show');
+    document.getElementById('lightboxImg').src = '';
+    document.body.style.overflow = '';
+  }
+  function stepLightbox(d){
+    if(!LB.photos.length) return;
+    LB.idx = (LB.idx + d + LB.photos.length) % LB.photos.length;
+    paintLightbox();
+  }
+
+  // ---------- Page behaviors ----------
+  function onScroll(){
+    const navLinks = Array.from(document.querySelectorAll('.tabnav-inner a'));
+    const sections = navLinks.map(l => document.getElementById((l.getAttribute('href') || '').slice(1)));
+    let current = sections[0];
+    const y = window.scrollY + 120;
+    sections.forEach(sec => { if(sec && !sec.hidden && sec.offsetTop <= y) current = sec; });
+    navLinks.forEach(l => l.classList.toggle('active', !!current && l.getAttribute('href') === '#' + current.id));
+  }
+
+  function wireFaq(){
     document.querySelectorAll('.faq-item').forEach(item => {
       const q = item.querySelector('.faq-q');
       const a = item.querySelector('.faq-a');
@@ -996,105 +1277,81 @@
         if(!isOpen){ item.classList.add('open'); a.style.maxHeight = a.scrollHeight + 'px'; }
       });
     });
+  }
 
-    // Lightbox close
+  let wired = false;
+  function wireOnce(){
+    if(wired) return;
+    wired = true;
+    window.addEventListener('scroll', onScroll, {passive:true});
+    const navSolid = () => document.getElementById('tabnav').classList.toggle('solid', window.scrollY > 40);
+    window.addEventListener('scroll', navSolid, {passive:true}); navSolid();
+
+    document.querySelectorAll('.lang-pill [data-lang]').forEach(b => {
+      b.addEventListener('click', () => setLang(b.getAttribute('data-lang')));
+    });
+
+    // Lightbox: close, arrows, keyboard, swipe
     const lightbox = document.getElementById('lightbox');
-    const closeLightbox = () => { lightbox.classList.remove('show'); document.getElementById('lightboxImg').src = ''; };
     document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
-    lightbox.addEventListener('click', (e) => { if(e.target === lightbox) closeLightbox(); });
-    document.addEventListener('keydown', (e) => { if(e.key === 'Escape') closeLightbox(); });
+    document.getElementById('lightboxPrev').addEventListener('click', () => stepLightbox(-1));
+    document.getElementById('lightboxNext').addEventListener('click', () => stepLightbox(1));
+    lightbox.addEventListener('click', e => { if(e.target === lightbox) closeLightbox(); });
+    document.addEventListener('keydown', e => {
+      if(!lightbox.classList.contains('show')) return;
+      if(e.key === 'Escape') closeLightbox();
+      else if(e.key === 'ArrowLeft') stepLightbox(-1);
+      else if(e.key === 'ArrowRight') stepLightbox(1);
+    });
+    let touchX = null;
+    lightbox.addEventListener('touchstart', e => { touchX = e.changedTouches[0].clientX; }, {passive:true});
+    lightbox.addEventListener('touchend', e => {
+      if(touchX === null) return;
+      const dx = e.changedTouches[0].clientX - touchX;
+      touchX = null;
+      if(Math.abs(dx) > 50) stepLightbox(dx < 0 ? 1 : -1);
+    }, {passive:true});
 
-    // Booking request form -> opens as pre-filled SMS
+    // Request form -> pre-filled text message (in the language of the number it is sent to)
     const form = document.getElementById('bookForm');
-    if(form && !form.dataset.wired){
-      form.dataset.wired = '1';
-      form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const name = document.getElementById('f_name').value.trim();
-        const phone = document.getElementById('f_phone').value.trim();
-        const service = document.getElementById('f_service').value;
-        const notes = document.getElementById('f_notes').value.trim();
-        const telHref = document.getElementById('f_lang').value;
-        if(!telHref) return;
-        const digits = telHref.replace(/\D/g, '');
-        const stylist = document.getElementById('f_staff').value;
-        const when = whenText();
-        const body = `Hi! I'd like to book: ${service}.${stylist ? ' Stylist: ' + stylist + '.' : ''}${when ? ' Preferred time: ' + when + '.' : ''} Name: ${name}. Phone: ${phone}.${notes ? ' Notes: ' + notes : ''}`;
-        window.location.href = `sms:+${digits}?&body=${encodeURIComponent(body)}`;
-      });
-    }
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const telHref = valOf('f_lang');
+      if(!telHref) return;
+      const digits = telHref.replace(/\D/g, '');
+      window.location.href = `sms:+${digits}?&body=${encodeURIComponent(composeSms(recipientLang(telHref)))}`;
+    });
 
-    // Booking request form -> "Email Instead" fallback
+    // "Email Instead"
     const emailBtn = document.getElementById('formEmailBtn');
-    if(emailBtn && !emailBtn.dataset.wired){
-      emailBtn.dataset.wired = '1';
-      emailBtn.addEventListener('click', () => {
-        const notifyEmail = emailBtn.dataset.notifyEmail;
-        if(!notifyEmail) return;
-        const bookForm = document.getElementById('bookForm');
-        if(bookForm && !bookForm.reportValidity()) return;
-        const when = whenText();
-        const name = document.getElementById('f_name').value.trim();
-        const phone = document.getElementById('f_phone').value.trim();
-        const service = document.getElementById('f_service').value;
-        const notes = document.getElementById('f_notes').value.trim();
-        const subject = `Appointment Request${name ? ' — ' + name : ''}`;
-        const stylist = document.getElementById('f_staff').value;
-        const body = `Name: ${name}\nPhone: ${phone}\nService: ${service}\n${when ? 'When: ' + when + '\n' : ''}${stylist ? 'Stylist: ' + stylist + '\n' : ''}${notes ? 'Notes: ' + notes : ''}`;
-        window.location.href = `mailto:${notifyEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-      });
-    }
-  }
-
-  // ---------- Spanish translation toggle (Google Translate widget, triggered by our own button) ----------
-  function googleTranslateElementInit(){
-    try{
-      new google.translate.TranslateElement({pageLanguage:'en', includedLanguages:'es', autoDisplay:false}, 'google_translate_element');
-    }catch(e){ console.error(e); }
-  }
-  window.googleTranslateElementInit = googleTranslateElementInit;
-
-  // The button lives inside the About section, which render() rebuilds, so this re-binds
-  // the click handler to the fresh button each time and keeps the label in sync with state.
-  let isSpanishActive = false;
-  function attachTranslateToggle(){
-    const btn = document.getElementById('translateToggle');
-    if(!btn) return;
-    const label = btn.querySelector('.full-label');
-    if(label) label.textContent = isSpanishActive ? 'Back to English' : 'Translate to Spanish';
-    let attempts = 0;
-    function applyLanguage(){
-      const combo = document.querySelector('.goog-te-combo');
-      if(!combo){
-        attempts++;
-        if(attempts < 40) setTimeout(applyLanguage, 250);
-        return;
-      }
-      combo.value = isSpanishActive ? 'es' : 'en';
-      combo.dispatchEvent(new Event('change'));
-    }
-    btn.addEventListener('click', () => {
-      isSpanishActive = !isSpanishActive;
-      if(label) label.textContent = isSpanishActive ? 'Back to English' : 'Translate to Spanish';
-      attempts = 0;
-      applyLanguage();
+    emailBtn.addEventListener('click', () => {
+      const notifyEmail = emailBtn.dataset.notifyEmail;
+      if(!notifyEmail) return;
+      if(!form.reportValidity()) return;
+      const mail = composeEmail(LANG);
+      window.location.href = `mailto:${notifyEmail}?subject=${encodeURIComponent(mail.subject)}&body=${encodeURIComponent(mail.body)}`;
     });
   }
 
-  fetch('content.json?_=' + Date.now())
-    .then(r => {
+  Promise.all([
+    fetch('content.json?_=' + Date.now()).then(r => {
       if(!r.ok) throw new Error('Could not load content.json');
       return r.json();
-    })
-    .then(render)
-    .catch(err => {
-      console.error(err);
-      document.getElementById('heroContent').innerHTML = `
-        <p class="presents">Rivas Super Salon</p>
-        <h1 class="display hero-title anim-none">Rivas Super Salon</h1>
-        <p class="hero-subtitle">Site information is temporarily unavailable.</p>
-      `;
-    });
+    }),
+    fetch('content.es.json?_=' + Date.now()).then(r => r.ok ? r.json() : {}).catch(() => ({}))
+  ]).then(([en, es]) => {
+    DATA.en = en;
+    DATA.es = mergeDeep(en, es);
+    LANG = initialLang();
+    render(DATA[LANG]);
+  }).catch(err => {
+    console.error(err);
+    document.getElementById('heroContent').innerHTML = `
+      <p class="presents">Rivas Super Salon</p>
+      <h1 class="display hero-title anim-none">Rivas Super Salon</h1>
+      <p class="hero-subtitle">${esc(t('err_unavailable'))}</p>
+    `;
+  });
 </script>
 
 </body>

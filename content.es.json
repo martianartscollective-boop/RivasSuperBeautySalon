@@ -1,0 +1,206 @@
+{
+  "contact": {
+    "kicker": "Nos encantaría verte",
+    "title": "Visítanos",
+    "emailLabel": "¿Prefieres llamar o mandar texto? Somos bilingües: inglés y español",
+    "cards": [
+      {
+        "title": "Llama o Manda Texto (Inglés)",
+        "desc": "Preguntas, citas o disponibilidad: escríbenos o llámanos en nuestro horario de atención."
+      },
+      {
+        "title": "Llama o Manda Texto (Español)",
+        "desc": "Hablamos español. Pregúntanos sobre servicios, precios o disponibilidad."
+      },
+      {
+        "title": "Encuéntranos",
+        "desc": "1407 N. Frazier St, Conroe, TX 77301. Estacionamiento gratis justo enfrente.",
+        "button": "Cómo Llegar"
+      }
+    ]
+  },
+  "booking": {
+    "payOnlineLabel": "Reserva y Paga en Línea",
+    "bookingNote": "Reserva en línea si quieres apartar tu lugar y pagar por adelantado, o simplemente llama, manda texto o ven directo: siempre puedes pagar en persona con efectivo o tarjeta.",
+    "callToBookHeading": "¿Prefieres llamar o mandar texto?",
+    "callToBookText": "Con gusto te agendamos por teléfono. Hablamos inglés y español.",
+    "formHeading": "Solicita una Cita",
+    "formText": "Elige fecha y hora y se abrirá un mensaje de texto directo para nosotros. Confirmaremos tu lugar.",
+    "formEmailButtonText": "Mejor por Correo",
+    "staffLabel": "Estilista preferido"
+  },
+  "serviceCategories": [
+    {
+      "title": "Cortes y Arreglos",
+      "items": [
+        {
+          "name": "Corte de Niño",
+          "desc": "Para nuestros clientes más pequeños."
+        },
+        {
+          "name": "Arreglo para Mujer",
+          "desc": "Un arreglo limpio para darle forma a tu cabello."
+        },
+        {
+          "name": "Corte de Hombre",
+          "desc": "Corte clásico, con máquina o con tijera."
+        },
+        {
+          "name": "Corte de Hombre — Solo Navaja",
+          "desc": "Corte completo usando únicamente la técnica de navaja."
+        },
+        {
+          "name": "Diseños en el Cabello",
+          "desc": "Diseño personalizado con máquina, se agrega a cualquier corte."
+        }
+      ]
+    },
+    {
+      "title": "Depilación con Cera",
+      "items": [
+        {
+          "name": "Mejillas"
+        },
+        {
+          "name": "Barba"
+        },
+        {
+          "name": "Bigote"
+        },
+        {
+          "name": "Cejas"
+        },
+        {
+          "name": "Cara Completa"
+        },
+        {
+          "name": "Combo Barba y Bigote",
+          "desc": "Los dos juntos, un solo precio."
+        }
+      ]
+    },
+    {
+      "title": "Color y Servicios Químicos",
+      "items": [
+        {
+          "name": "Permanente",
+          "desc": "El tipo de rizo y el precio dependen del largo del cabello y del resultado que quieras."
+        },
+        {
+          "name": "Tratamiento de Keratina",
+          "desc": "Tratamiento alisador que relaja los rizos y el frizz para un cabello más liso y sedoso."
+        },
+        {
+          "name": "Alisado de Cabello",
+          "desc": "Servicio profesional de alisado."
+        },
+        {
+          "name": "Mechas",
+          "desc": "Mechas completas o parciales, el precio depende de la cantidad de papeles y del largo."
+        },
+        {
+          "name": "Lavado, Tratamiento y Secado",
+          "desc": "Lavado profundo, tratamiento acondicionador y secado con cepillo."
+        }
+      ]
+    },
+    {
+      "title": "Extensiones",
+      "items": [
+        {
+          "name": "Trae Tus Propias Extensiones",
+          "desc": "Se instalan con el método de cera (dura de 2 a 3 meses), trenzadas o con keratina. Dinos tu método preferido cuando reserves."
+        },
+        {
+          "name": "Extensiones del Salón — Elige Tu Color",
+          "desc": "Nosotros ponemos las extensiones y les damos el color que quieras, hechas a tu medida."
+        }
+      ]
+    }
+  ],
+  "site": {
+    "metaTitle": "Rivas Super Salon — Conroe, TX",
+    "metaDescription": "Rivas Super Salon en Conroe, TX. Cortes, depilación, permanentes, extensiones, keratina, mechas y más. Hablamos inglés y español.",
+    "homeNavLabel": "Inicio",
+    "heroPrimaryButton": "Reserva una Cita",
+    "heroSecondaryButton": "Ver Servicios",
+    "servicesKicker": "Menú",
+    "servicesTitle": "Servicios y Precios",
+    "servicesNote": "Los precios pueden variar según el largo, la textura del cabello y el resultado que quieras. Pregúntale a tu estilista por un precio exacto.",
+    "galleryKicker": "Nuestro Trabajo",
+    "galleryTitle": "Cortes Frescos, Looks Frescos",
+    "galleryIntro": "Un vistazo al trabajo real de nuestras sillas: cortes, color, extensiones y más.",
+    "bookingKicker": "Cuando tú quieras",
+    "bookingTitle": "Reserva una Cita",
+    "faqKicker": "Bueno saber",
+    "faqTitle": "Preguntas Frecuentes",
+    "directionsButtonText": "Cómo Llegar"
+  },
+  "hero": {
+    "presents": "El Salón Completo de Conroe",
+    "subtitle": "Cortes, color, depilación y extensiones: una silla, todos los looks",
+    "hoursLine": "Lun–Dom 10am–7pm"
+  },
+  "about": {
+    "kicker": "Sobre el Salón",
+    "paragraphs": [
+      "Rivas Super Salon es un salón y barbería completo en 1407 N. Frazier, en Conroe. Ofrecemos todo, desde cortes clásicos y arreglo de barba hasta permanentes, tratamientos de keratina, extensiones y color.",
+      "Nuestro equipo es bilingüe, hablamos inglés y español, para que cada cliente se sienta en casa. Ven sin cita para un arreglo rápido o reserva con tiempo para una transformación completa."
+    ],
+    "stats": [
+      {
+        "label": "Servicios ofrecidos"
+      },
+      {
+        "label": "Equipo bilingüe"
+      },
+      {
+        "label": "Días a la semana"
+      },
+      {
+        "value": "Todas",
+        "label": "Edades bienvenidas"
+      }
+    ]
+  },
+  "location": {
+    "paragraphs": [
+      "1407 N. Frazier St, Conroe, TX 77301. Estacionamiento gratis justo enfrente.",
+      "Siempre aceptamos clientes sin cita, y las citas tienen prioridad. Llama o manda texto antes para saber cuánto hay de espera."
+    ]
+  },
+  "faq": [
+    {
+      "q": "¿Necesito cita o puedo llegar sin cita?",
+      "a": "¡Ambas funcionan! Siempre aceptamos clientes sin cita, pero las citas tienen prioridad, sobre todo en fin de semana. Llama o manda texto antes si quieres saber cuánto hay de espera."
+    },
+    {
+      "q": "¿Puedo pagar en persona en lugar de en línea?",
+      "a": "Claro que sí. Puedes pagar en persona con efectivo o tarjeta; reservar o pagar en línea es solo una opción para quien prefiere apartar su lugar con tiempo."
+    },
+    {
+      "q": "Quiero traer mis propias extensiones, ¿me las pueden instalar?",
+      "a": "¡Sí! Instalamos extensiones que traiga el cliente con el método de cera (dura aproximadamente de 2 a 3 meses), trenzadas o con keratina. Solo dinos tu método preferido en las notas cuando reserves."
+    },
+    {
+      "q": "¿Hablan español?",
+      "a": "¡Sí! Nuestro equipo es totalmente bilingüe. Llama o manda texto al (936) 529-6735 para español, o al (936) 224-9442 para inglés."
+    }
+  ],
+  "footer": {
+    "tagline": "Conroe, TX · Lun–Dom 10am–7pm",
+    "note": "Rivas Super Salon · Se aceptan citas y clientes sin cita."
+  },
+  "team": {
+    "kicker": "Nuestro Equipo",
+    "heading": "Conoce a Tus Estilistas",
+    "members": [
+      {
+        "role": "Dueña y Estilista"
+      },
+      {
+        "role": "Estilista"
+      }
+    ]
+  }
+}
